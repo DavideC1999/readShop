@@ -1,0 +1,20 @@
+<div class="container">
+    <img [src]="book.imageUrl" [alt]="book.name" />
+
+    <div class="details">
+        <div class="header">
+            <span class="name">
+                {{book.name}}
+            </span>
+            <span class="favorite {{book.favorite?'':'not'}}">
+                ❤
+            </span>
+            
+        </div>
+        <div class="price">
+            <span>€{{book.price}}</span>
+        </div>
+        <button (click)="addToCart()">Aggiungi al carrello</button>
+    </div>
+
+</div>

@@ -1,3 +1,12 @@
+.container{
+    /*background-color: #e0f1e5;
+    opacity: 20;*/
+    padding: 0.1rem 10% 100% 10%;
+    margin: 1rem 10% 10% 10%;
+    outline: auto;
+    border-radius: 1rem;
+}
+
 ul{
     display: flex;
     justify-content: center;
@@ -16,7 +25,7 @@ li a{
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    color: #e72929;
+    color: #25a345;
 }
 
 li a:hover{
@@ -25,7 +34,7 @@ li a:hover{
 }
 
 li a img{
-    object-fit: cover;
+    object-fit: fill;
     height: 14.5rem;
 }
 

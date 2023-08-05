@@ -1,4 +1,4 @@
-import { Book } from "./shared/models/book";
+import { Book } from "./shared/models/Book";
 
 export const sample_books: Book[] = [
     {

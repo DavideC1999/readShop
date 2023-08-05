@@ -1,0 +1,76 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 3rem;
+}
+
+.container > *{
+    min-width: 25rem;
+    max-width: 40rem;
+}
+
+img{
+    border-radius: 0rem;
+    object-fit: fill;
+    height: 25rem;
+    width: 1rem;
+    margin: 3rem;
+}
+
+.details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0;
+    border: 3rem;
+    padding: 2rem;
+    color: black;
+    margin-left: 1rem;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.name{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.favorite{
+    color: #25a345;
+    font-size: 2.5rem;
+}
+
+.favorite.not{
+    color: gray;
+}
+
+.price{
+    font-size: 1.8rem;
+    margin: 2rem 2rem 2rem 0;
+    color: green;
+}
+
+.price::before{
+    content: "Prezzo: ";
+    color: darkgray;
+}
+
+button{
+    color: white;
+    background: #25a345;
+    border: none;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 10rem;
+    outline: none;
+}
+
+button:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}

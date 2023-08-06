@@ -1,109 +1,26 @@
-
-/*export const sample_books: any[] = [
-    {
-        id!: string;
-        name!: string;
-        price!: number;
-        publisher!: string;
-        genre!: string[];
-        description!: string;
-        ISBN!: string;
-        releaseYear!: string;
-        favorite!: boolean;
-        imageUrl!: string;
-    },
-    {
-      id:'1',
-      name: 'Pizza Pepperoni',
-      cookTime: '10-20',
-      price: 10,
-      favorite: false,
-      origins: ['italy'],
-      stars: 4.5,
-      imageUrl: 'assets/food-1.jpg',
-      tags: ['FastFood', 'Pizza', 'Lunch'],
-    },
-    {
-      id:'2',
-      name: 'Meatball',
+export const sample_books: any[] = [
+  {
+      id: '1',
+      name: 'Immortale',
+      author: 'Catherynne M. Valente',
       price: 20,
-      cookTime: '20-30',
-      favorite: true,
-      origins: ['persia', 'middle east', 'china'],
-      stars: 4.7,
-      imageUrl: 'assets/food-2.jpg',
-      tags: ['SlowFood', 'Lunch'],
-    },
-    {
-      id:'3',
-      name: 'Hamburger',
-      price: 5,
-      cookTime: '10-15',
+      genre: ['Horror, Drama'],
+      description: 'È appena scesa la sera, a San Pietroburgo, quando un uomo affascinante bussa alla porta di Marja Morevna per chiederla in sposa. È Košcej l’Immortale, zar della Vita. Marja accetta di seguirlo attraverso le steppe della Russia. ',
+      ISBN: '9791259674173',
+      releaseYear: '2023',
       favorite: false,
-      origins: ['germany', 'us'],
-      stars: 3.5,
-      imageUrl: 'assets/food-3.jpg',
-      tags: ['FastFood', 'Hamburger'],
-    },
-    {
-      id:'4',
-      name: 'Fried Potatoes',
-      price: 2,
-      cookTime: '15-20',
-      favorite: true,
-      origins: ['belgium', 'france'],
-      stars: 3.3,
-      imageUrl: 'assets/food-4.jpg',
-      tags: ['FastFood', 'Fry'],
-    },
-    {
-      id:'5',
-      name: 'Chicken Soup',
-      price: 11,
-      cookTime: '40-50',
+      imageUrl: 'assets/9791259674173_0_500_0_75.jpg'
+  },
+  {
+      id: '2',
+      name: 'Il messaggio',
+      author: 'Jia Mai',
+      price: 18,
+      genre: ['Horror, Drama'],
+      description: 'Cina, 1941. Al culmine del conflitto sino-giapponese, la Repubblica di Nanchino sostenuta da Tokyo rafforza la lotta clandestina contro la resistenza. Una notte, quattro agenti dell’intelligence',
+      ISBN: '9788829718474',
+      releaseYear: '2023',
       favorite: false,
-      origins: ['india', 'asia'],
-      stars: 3.0,
-      imageUrl: 'assets/food-5.jpg',
-      tags: ['SlowFood', 'Soup'],
-    },
-    {
-      id:'6',
-      name: 'Vegetables Pizza',
-      price: 9,
-      cookTime: '40-50',
-      favorite: false,
-      origins: ['italy'],
-      stars: 4.0,
-      imageUrl: 'assets/food-6.jpg',
-      tags: ['FastFood', 'Pizza', 'Lunch'],
-    },
-  ]
-  
-  export const sample_tags:any[] = [
-    { name: 'All', count: 6 },
-    { name: 'FastFood', count: 4 },
-    { name: 'Pizza', count: 2 },
-    { name: 'Lunch', count: 3 },
-    { name: 'SlowFood', count: 2 },
-    { name: 'Hamburger', count: 1 },
-    { name: 'Fry', count: 1 },
-    { name: 'Soup', count: 1 },
-  ]
-  
-  export const sample_users: any[] = [
-    {
-      name: "John Doe",
-      email: "john@gmail.com",
-      password: "12345",
-      address: "Toronto On",
-      isAdmin: true,
-    },
-    {
-      name: "Jane Doe",
-      email: "Jane@gmail.com",
-      password: "12345",
-      address: "Shanghai",
-      isAdmin: false,
-    },
-  ];*/
+      imageUrl: 'assets/9788829718474_0_500_0_75.jpg'
+  },
+]

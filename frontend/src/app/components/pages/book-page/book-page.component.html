@@ -1,4 +1,9 @@
-<div class="container">
+<app-not-found
+    [visible]="!book"
+    notFoundMessage="Book not Found!"
+    resetLinkText="Back to Homepage"
+></app-not-found>
+<div *ngIf="book" class="container">
     <img [src]="book.imageUrl" [alt]="book.name" />
 
     <div class="details">

@@ -1,10 +1,9 @@
 .container{
-    /*background-color: #e0f1e5;
-    opacity: 20;*/
     padding: 0.1rem 10% 100% 10%;
-    margin: 1rem 10% 10% 10%;
-    outline: auto;
+    height: 20rem;
+    border: 1px solid #25a345;
     border-radius: 1rem;
+    margin: 1rem 10% 10% 10%;
 }
 
 ul{

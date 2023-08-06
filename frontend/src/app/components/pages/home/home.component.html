@@ -1,5 +1,9 @@
 <app-search></app-search>
-<div class="container">
+<app-not-found
+    [visible]="!books || !books.length"
+    resetLinkText = "Reset Search">
+</app-not-found>
+<div *ngIf="books.length" class="container">
     <ul>
         <li *ngFor="let book of books">
             <a routerLink="/book/{{book.id}}">

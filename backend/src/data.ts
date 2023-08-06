@@ -24,3 +24,20 @@ export const sample_books: any[] = [
       imageUrl: 'assets/9788829718474_0_500_0_75.jpg'
   },
 ]
+
+export const sample_users: any[] = [
+  {
+    name: 'davide',
+    email: 'd@d.d',
+    password: 'davide',
+    address: 'd',
+    isAdmin: true
+  },
+  {
+    name: 'a',
+    email: 'a@a.a',
+    password: 'a',
+    address: 'a',
+    isAdmin: false
+  }
+]

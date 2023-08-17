@@ -3,7 +3,7 @@ import { sample_users } from "../data";
 import jwt from 'jsonwebtoken'
 import asyncHandler from "express-async-handler";
 import { User, UserModel } from "../models/user.model";
-import { HTPP_BAD_REQUEST } from "../constants/http_status";
+import { HTTP_BAD_REQUEST } from "../constants/http_status";
 import bcrypt from 'bcryptjs'
 
 const router = Router();
@@ -26,31 +26,32 @@ router.post("/login", asyncHandler( async (req, res) => {
     if(user && (await bcrypt.compare(password, user.password))){
         res.send(generateTokenResponse(user))
     }else{
-        res.status(HTPP_BAD_REQUEST).send("Email or Password not valid!")
+        res.status(HTTP_BAD_REQUEST).send("Email or Password not valid!")
     }
 }))
 
 router.post('/register', asyncHandler( async (req, res) => {
-    const {name, email, password, address} = req.body
-    const user = await UserModel.findOne({email})
-    if(user){
-        res.status(HTPP_BAD_REQUEST).send('User is already exist, please login!')
+      const {name, email, password, address, isAdmin} = req.body;
+      const user = await UserModel.findOne({email});
+      if(user){
+        res.status(HTTP_BAD_REQUEST).send('User is already exist, please login!');
         return;
-    }
+      }
+  
+      const enPassword = await bcrypt.hash(password, 10);
 
-    const enPassword = await bcrypt.hash(password, 10);
-    const newUser: User = {
-        id: '',
+      const newUser:User = {
         name,
         email: email.toLowerCase(),
         password: enPassword,
         address,
-        isAdmin: false
+        isAdmin: isAdmin
+      }
+  
+      const dbUser = await UserModel.create(newUser);
+      res.send(generateTokenResponse(dbUser));
     }
-
-    const dbUser = await UserModel.create(newUser)
-    res.send(generateTokenResponse(dbUser))
-}))
+  ))
 
 const generateTokenResponse = (user: User) => {
     const token = jwt.sign({
@@ -60,7 +61,6 @@ const generateTokenResponse = (user: User) => {
     }) 
 
     return {
-        id: user.id,
         email: user.email,
         name: user.name,
         address: user.address,

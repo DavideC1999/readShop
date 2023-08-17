@@ -14,8 +14,8 @@ export class RegisterPageComponent implements OnInit {
 
   registerForm!:FormGroup;
   isSubmitted = false;
-
   returnUrl = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
@@ -25,11 +25,11 @@ export class RegisterPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
-      confirmPassword: ['', Validators.required],
-      address: ['', [Validators.required, Validators.minLength(10)]]
+      confirmPassword: ['', [Validators.required, Validators.minLength(5)]],
+      address: ['', Validators.required]
     },{
       validators: PasswordsMatchValidator('password','confirmPassword')
     });
@@ -46,7 +46,7 @@ export class RegisterPageComponent implements OnInit {
     if(this.registerForm.invalid) return;
 
     const fv= this.registerForm.value;
-    const user :IUserRegister = {
+    const user: IUserRegister = {
       name: fv.name,
       email: fv.email,
       password: fv.password,

@@ -1,12 +1,11 @@
-import { Schema, model } from "mongoose";
+import {Schema, model} from 'mongoose';
 
 export interface User{
-    id: string;
-    email: string;
+    email:string;
     password: string;
-    name: string;
-    address: string;
-    isAdmin: boolean;
+    name:string;
+    address:string;
+    isAdmin:boolean;
 }
 
 export const UserSchema = new Schema<User>({
@@ -14,7 +13,7 @@ export const UserSchema = new Schema<User>({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     address: {type: String, required: true},
-    isAdmin: {type: Boolean, required: true},
+    isAdmin: {type: Boolean},
 }, {
     timestamps: true,
     toJSON:{
@@ -23,6 +22,6 @@ export const UserSchema = new Schema<User>({
     toObject:{
         virtuals: true
     }
-})
+});
 
-export const UserModel = model<User>('users', UserSchema)
+export const UserModel = model<User>('user', UserSchema);

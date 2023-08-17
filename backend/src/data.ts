@@ -1,6 +1,5 @@
 export const sample_books: any[] = [
   {
-      id: '1',
       name: 'Immortale',
       author: 'Catherynne M. Valente',
       price: 20,
@@ -12,7 +11,6 @@ export const sample_books: any[] = [
       imageUrl: 'assets/9791259674173_0_500_0_75.jpg'
   },
   {
-      id: '2',
       name: 'Il messaggio',
       author: 'Jia Mai',
       price: 18,

@@ -4,7 +4,7 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import bookRouter from './routers/book.router';
-import loginRouter from './routers/login.router';
+import userRouter from './routers/user.router';
 import { dbConnect } from './configs/db.config';
 
 dbConnect();
@@ -18,7 +18,7 @@ app.use(cors({
 
 app.use("/api/books", bookRouter)
 
-app.use("/api/users/login", loginRouter)
+app.use("/api/users", userRouter)
 
 const port = 5000;
 app.listen(port, ()=>{

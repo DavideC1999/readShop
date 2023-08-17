@@ -1,0 +1,1 @@
+export const HTPP_BAD_REQUEST = 400

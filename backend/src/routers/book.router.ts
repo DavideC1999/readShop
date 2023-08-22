@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { sample_books, sample_users } from "../data";
 import asyncHandler from "express-async-handler";
-import { BookModel } from "../models/book.model";
+import { Book, BookModel } from "../models/book.model";
+import { HTTP_BAD_REQUEST } from "../constants/http_status";
 
 const router = Router();
 
@@ -22,11 +23,15 @@ router.get("/", asyncHandler( async (req, res) => {
     res.send(books);
 }))
 
-router.get("/search/:searchTerm", (req, res) =>{
+router.get("/search/:searchTerm", asyncHandler( async(req, res) =>{
     const searchTerm = req.params.searchTerm
-    const books = sample_books.filter(book => book.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    res.send(books);
-})
+    try {
+        const books = await BookModel.find({ name: { $regex: new RegExp(searchTerm, "i") } });
+        res.send(books);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}))
 
 router.get("/:bookId", asyncHandler(
     async (req,res) => {
@@ -34,5 +39,30 @@ router.get("/:bookId", asyncHandler(
          res.send(book)
     }
 ))
+
+router.post("/addNewBook", asyncHandler(async (req, res) => {
+    const {name, price, author, genre, description, ISBN, releaseYear, imageUrl} = req.body
+    const book = await BookModel.findOne({ISBN})
+
+    if(book){
+        res.status(HTTP_BAD_REQUEST).send('Book is already in database!')
+        return
+    }
+
+    const newBook:Book = {
+        name: name,
+        price: price,
+        author: author,
+        genre: genre,
+        description: description,
+        ISBN: ISBN,
+        releaseYear: releaseYear,
+        imageUrl: imageUrl,
+        favorite: false
+    }
+
+    const dbBook = await BookModel.create(newBook)
+    res.send(dbBook)
+}))
 
 export default router;

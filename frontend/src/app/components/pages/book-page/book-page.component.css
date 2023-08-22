@@ -49,6 +49,11 @@ img{
     color: gray;
 }
 
+.description{
+    font-size: 1rem;
+    margin: 2rem 2rem 2rem 0;
+}
+
 .price{
     font-size: 1.8rem;
     margin: 2rem 2rem 2rem 0;

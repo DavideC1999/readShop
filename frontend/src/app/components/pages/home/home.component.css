@@ -1,9 +1,9 @@
 .container{
     padding: 0.1rem 10% 100% 10%;
     height: 20rem;
-    border: 1px solid #25a345;
+    /*border: 1px solid #25a345;*/
     border-radius: 1rem;
-    margin: 1rem 10% 10% 10%;
+    margin: 5rem 10% 10% 10%;
 }
 
 ul{

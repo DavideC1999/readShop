@@ -1,8 +1,8 @@
 <div>
-    <input #s type="text" placeholder="Search books"
+    <input #s type="text" placeholder="Cerca un libro"
         (keyup.enter)="search(s.value)"
         [value]="searchTerm" />
     <button (click)="search(s.value)">
-        Search
+        Cerca
     </button>
 </div>

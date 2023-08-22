@@ -1,0 +1,33 @@
+<app-title title="Orders"></app-title>
+<div *ngIf="orders.length" >
+    <div *ngFor="let order of orders" class="container">
+        <ul>
+            <li>
+                <div  *ngFor="let item of order.items" class="items">
+                    <div>
+                        <img [src]="item.book.imageUrl">
+                    </div>
+                    <div>
+                        {{item.book.name}}
+                    </div>
+                    <div>
+                        {{item.quantity}}
+                    </div>
+                    <div>
+                        €{{item.book.price}}
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div  class="checkout">
+            <div>
+                <div class="total-quantity">{{order.items.length}}</div>
+            </div>
+            <div>
+                <div class="total-price">€{{order.totalPrice}}</div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>

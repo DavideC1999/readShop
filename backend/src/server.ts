@@ -5,7 +5,9 @@ import express from 'express';
 import cors from 'cors';
 import bookRouter from './routers/book.router';
 import userRouter from './routers/user.router';
+import orderRouter from './routers/order.router';
 import { dbConnect } from './configs/db.config';
+
 
 dbConnect();
 
@@ -17,8 +19,8 @@ app.use(cors({
 }))
 
 app.use("/api/books", bookRouter)
-
 app.use("/api/users", userRouter)
+app.use("/api/orders", orderRouter)
 
 const port = 5000;
 app.listen(port, ()=>{

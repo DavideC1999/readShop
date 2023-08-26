@@ -6,7 +6,7 @@ import { OrderModel } from "../models/order.mode";
 import auth from '../middlewares/auth.mid'
 
 const router = Router()
-router.use(auth)
+//router.use(auth)
 
 router.post('/create', asyncHandler( async (req:any, res:any) => {
     const requestOrder = req.body
@@ -29,9 +29,28 @@ router.post('/create', asyncHandler( async (req:any, res:any) => {
 router.post('/getAllOrders', asyncHandler( async (req:any, res: any) => {
     const {name, address} = req.body
 
-    const orders = await OrderModel.find({name: name, address: address})
+    const orders = await OrderModel.find({ name: name, address: address })
 
-    res.send(orders);
+    if (orders) {
+        res.send(orders);
+    } else {
+        res.send("Nessun ordine");
+    }
+
+}))
+
+router.post('/deleteOrder', asyncHandler(async(req:any, res:any) => {
+
+    const {id} = req.body
+
+    const result = await OrderModel.deleteOne({ _id: id });
+
+    if (result.deletedCount === 1) {
+        res.send("Ordine eliminato con successo");
+    } else {
+        res.send("Ordine non trovato");
+    }
+
 }))
 
 export default router;

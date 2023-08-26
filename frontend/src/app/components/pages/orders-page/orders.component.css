@@ -84,3 +84,20 @@ li div{
     content: "Quantità: ";
     color: gray;
 }
+
+.delete {
+    padding: 0.2rem;
+    color: white;
+    background: red;
+    display: block;
+    width: 99%;
+    border-radius: 0.5rem;
+    text-align: center;
+    opacity: 0.7;
+    justify-self: center;
+}
+
+.delete:hover{
+    opacity: 1;
+    cursor: pointer;
+}

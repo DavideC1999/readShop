@@ -55,6 +55,8 @@ export class CartService {
     this.cart.totalCount = this.cart.items
     .reduce((prevSum, currentItem) => prevSum + currentItem.quantity, 0)
 
+    this.cart.totalPrice = parseFloat(this.cart.totalPrice.toFixed(2)) // tronca a due cifre dopo la virgola
+
     const cartJson = JSON.stringify(this.cart)
     localStorage.setItem('Cart', cartJson)
     this.cartSubject.next(this.cart)

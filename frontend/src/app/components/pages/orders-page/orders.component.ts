@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,10 +13,11 @@ import { User } from 'src/app/shared/models/User';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
+
   orders: Order[] = [];
   items: CartItem[] = [];
 
-  constructor(private orderService: OrderService, activatedRoute: ActivatedRoute, userService: UserService) {
+  constructor(private orderService: OrderService,private router:Router, activatedRoute: ActivatedRoute,private userService: UserService) {
     let orderObservable: Observable<Order[]>;
     activatedRoute.params.subscribe((params) => {
 
@@ -30,6 +31,12 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  
+  deleteOrder(id: number){
+    this.orderService.deleteOrder(id.toString())
+    this.orderService.getAllOrders(this.userService).subscribe(orders => {
+      this.orders = orders;
+    });
+    this.router.navigateByUrl("/orders")
+  }
 
 }

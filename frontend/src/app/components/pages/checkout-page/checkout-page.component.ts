@@ -15,7 +15,7 @@ import { Order } from 'src/app/shared/models/Order';
 export class CheckoutPageComponent implements OnInit {
   order: Order = new Order()
   checkoutForm!: FormGroup
-  constructor(cartService: CartService, 
+  constructor(private cartService: CartService, 
     private formBuilder: FormBuilder,
     private userService: UserService,
     private toastrService: ToastrService,
@@ -46,8 +46,6 @@ export class CheckoutPageComponent implements OnInit {
     this.order.name = this.fc.name.value
     this.order.address = this.fc.address.value
 
-    console.log(this.order)
-
     this.orderService.create(this.order).subscribe({
       next: () => {
         this.toastrService.success('Pagamento effettuato correttamente!')
@@ -58,5 +56,7 @@ export class CheckoutPageComponent implements OnInit {
         this.toastrService.error(erroResponse.error, 'Cart')
       }
     })
+
+    this.cartService.clearCart()
   }
 }

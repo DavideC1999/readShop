@@ -1,6 +1,7 @@
 <app-title title="Orders"></app-title>
 <div *ngIf="orders.length" >
     <div *ngFor="let order of orders" class="container">
+        <a routerLink="/book/{{order.id}}"></a>
         <ul>
             <li>
                 <div  *ngFor="let item of order.items" class="items">
@@ -26,6 +27,10 @@
             <div>
                 <div class="total-price">€{{order.totalPrice}}</div>
             </div>
+            <div >
+                <button class="delete" (click)="deleteOrder(order.id)">Elimina ordine</button>
+            </div>
+            
         </div>
     </div>
     

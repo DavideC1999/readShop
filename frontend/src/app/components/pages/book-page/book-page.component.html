@@ -11,13 +11,30 @@
             <span class="name">
                 {{book.name}}
             </span>
+            
             <span class="favorite {{book.favorite?'':'not'}}">
                 ❤
             </span>
-            
         </div>
-        <div class="description">
-            {{book.description}}
+        <br>
+        <span class="info">
+            Autore: {{book.author}}
+        </span>
+        <br>
+        <span class="info">
+            Genere: {{book.genre}}
+        </span>
+        <br>
+        <span class="info">
+            Anno di rilascio: {{book.releaseYear}}
+        </span>
+        <br>
+        <span class="info">
+            ISBN: {{book.ISBN}}
+        </span>
+        <br>
+        <div class="info">
+            Descrizione: {{book.description}}
         </div>
         <div class="price">
             <span>€{{book.price}}</span>

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BookService } from 'src/app/services/book.service';
 import { UserService } from 'src/app/services/user.service';
 import { IBook } from 'src/app/shared/interfaces/IBook';
-import { IUserRegister } from 'src/app/shared/interfaces/IUserRegister';
-import { PasswordsMatchValidator } from 'src/app/shared/validators/password_match_validator';
+
 @Component({
   selector: 'app-add-new-book-page',
   templateUrl: './add-new-book-page.component.html',
@@ -15,13 +15,13 @@ export class AddNewBookPageComponent implements OnInit{
   registerForm!: FormGroup;
   isSubmitted = false;
   returnUrl = '';
-  bookService: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private bookService: BookService
   ) { }
 
   ngOnInit(): void {
@@ -46,8 +46,10 @@ export class AddNewBookPageComponent implements OnInit{
 
   submit(){
     this.isSubmitted = true;
-    if(this.registerForm.invalid) return;
-
+    if(this.registerForm.invalid) {
+      console.log("errore")
+      return;
+    }
     const fv = this.registerForm.value;
     const book: IBook = {
       id: '',
@@ -61,8 +63,8 @@ export class AddNewBookPageComponent implements OnInit{
       favorite: fv.favorite,
       imageUrl: fv.imageUrl
     };
-
     this.bookService.addNewBook(book)
+    this.router.navigateByUrl("/")
   }
 
 

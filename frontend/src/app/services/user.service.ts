@@ -13,8 +13,10 @@ const USER_KEY = 'User'
   providedIn: 'root'
 })
 export class UserService {
+
   private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
   public userObservable: Observable<User>;
+
   constructor(private http:HttpClient, private toastrService:ToastrService) { 
     this.userObservable = this.userSubject.asObservable()
   }
@@ -31,7 +33,7 @@ export class UserService {
           this.userSubject.next(user)
           this.toastrService.success(
             `Welcome to readShop ${user.name}!`,
-            'Login Successfull' 
+            'Login effettuato con successo' 
           )
         },
         error: (errorResponse) =>{
@@ -49,7 +51,7 @@ export class UserService {
           this.userSubject.next(user)
           this.toastrService.success(
             `Welcome to readShop ${user.name}!`,
-            'Register Successfull' 
+            'Utente registrato con successo!' 
           )
         },
         error: (errorResponse) =>{
@@ -62,7 +64,7 @@ export class UserService {
   logout(){
     this.userSubject.next(new User())
     localStorage.removeItem(USER_KEY)
-    window.location.reload()
+    //window.location.reload()
   }
 
   private setUserToLocalStorage(user:User){

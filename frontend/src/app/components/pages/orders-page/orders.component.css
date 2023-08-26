@@ -1,103 +1,58 @@
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: normal;
-    margin: 1.5rem;
-    margin-top: 0.5rem;
-}
-
-.items {
-    display: flex;
-    flex-direction: row;
-    align-items: left;
-    justify-content: flex-start;
-    margin-bottom: 5px; /* Aggiungi uno spazio tra gli elementi */
-}
-
-ul{
+.container {
     display: flex;
     flex-direction: column;
-    flex: 3 0;
-    justify-content: space-evenly;
-    border: 1px solid #25a345;
-    border-radius: 1rem;
-    list-style: none;
-    margin: 0.5rem;
-    padding: 0;
-}
+    margin: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  ul{
+    text-align: center;
+  }
 
-ul li{
-    display: flex;
-    justify-content: space-around;
+  .order-item {
+    display: inline-flex;
     align-items: center;
-    flex-wrap: wrap;
     border-bottom: 1px solid #e4e4e4;
-}
-
-ul li:last-child{
-    border: none;
-}
-
-li img{
-    height: 1rem;
-    width: 5rem;
-    height: 5rem;
-    object-fit: fill;
-}
-
-li div{
     padding: 1rem;
-}
-
-/*li div:not(:first-child){
-    flex-basis: 18%;
-}*/
-
-.checkout{
+  }
+  
+  .item-image img {
+    height: 5rem;
+    width: 5rem;
+    object-fit: fill;
+    margin-right: 1rem;
+  }
+  
+  .summary {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #25a345;
-    border-radius: 1rem;
-    /*flex: 1 3;
-    height: 20rem;
-    padding: 0.5rem;*/
-}
-
-.checkout > div{
-    font-size: 1.4rem;
-    margin: 1rem;
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.total-price::before{
-    content: "Prezzo: ";
-    color: gray;
-}
-
-.total-quantity::before{
-    content: "Quantità: ";
-    color: gray;
-}
-
-.delete {
-    padding: 0.2rem;
-    color: white;
-    background: red;
+    padding-bottom: 0rem;
+  }
+  
+  .total-quantity::before,
+  .total-price::before,
+  .id-order::before {
+    content: "";
     display: block;
-    width: 99%;
-    border-radius: 0.5rem;
-    text-align: center;
-    opacity: 0.7;
-    justify-self: center;
-}
-
-.delete:hover{
+    width: 7rem;
+    color: gray;
+  }
+  
+  .delete {
+    padding: 0.2rem;
+    margin-top: 1rem;
+  }
+  
+  .delete:hover {
     opacity: 1;
     cursor: pointer;
-}
+  }
+  
+  .separator {
+    border: none;
+    height: 1px;
+    background-color: #25a345;
+    margin: 0 0;
+  }

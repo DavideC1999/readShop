@@ -5,13 +5,16 @@ import { ORDER_CREATE_URL, ORDER_DELETE_URL, ORDER_GET_ALL_URL } from '../shared
 import { Observable } from 'rxjs';
 import { User } from '../shared/models/User';
 import { UserService } from './user.service';
+import { ToastrService } from 'ngx-toastr';
+import { tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastrService:ToastrService) { }
   create(order: Order){
     const requ = this.http.post<Order>(ORDER_CREATE_URL, order)
     return requ
@@ -33,11 +36,19 @@ export class OrderService {
       id: id,
     };
 
-    this.http.post(ORDER_DELETE_URL, requestData, { responseType: 'text' })
-        .subscribe(response => {
-            console.log(response);
-        }, error => {
-            console.error(error);
-        });
+    return this.http.post(ORDER_DELETE_URL, requestData, { responseType: 'text' }).pipe(
+      tap({
+        next: () => {
+          
+          //window.location.reload()
+          this.toastrService.success(
+            'Ordine eliminato con successo'
+          )
+        },
+        error: (errorResponse: { error: string | undefined; }) =>{
+          this.toastrService.error(errorResponse.error, 'Libro non aggiunto');
+        }
+      })
+    ).subscribe();
     }
 }

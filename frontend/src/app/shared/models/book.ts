@@ -3,7 +3,7 @@ export class Book{
     name!: string;
     author!: string;
     price!: number;    
-    genre!: string[];
+    genre!: string;
     description!: string;
     ISBN!: string;
     releaseYear!: string;

@@ -1,38 +1,35 @@
-<app-title title="Orders"></app-title>
-<div *ngIf="orders.length" >
-    <div *ngFor="let order of orders" class="container">
-        <a routerLink="/book/{{order.id}}"></a>
-        <ul>
-            <li>
-                <div  *ngFor="let item of order.items" class="items">
-                    <div>
-                        <img [src]="item.book.imageUrl">
-                    </div>
-                    <div>
-                        {{item.book.name}}
-                    </div>
-                    <div>
-                        {{item.quantity}}
-                    </div>
-                    <div>
-                        €{{item.book.price}}
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <div  class="checkout">
-            <div>
-                <div class="total-quantity">{{order.items.length}}</div>
-            </div>
-            <div>
-                <div class="total-price">€{{order.totalPrice}}</div>
-            </div>
-            <div >
-                <button class="delete" (click)="deleteOrder(order.id)">Elimina ordine</button>
-            </div>
-            
+<app-title title="Ordini"></app-title>
+<app-not-found
+    [visible]="!orders || !orders.length"
+    notFoundMessage="Non sono presenti ordini!"
+    resetLinkText = "Acquista">
+</app-not-found>
+<div *ngIf="orders.length">
+  <div *ngFor="let order of orders" class="container">
+    <a routerLink="/book/{{order.id}}"></a>
+    <ul>
+      <li class="order-item" *ngFor="let item of order.items">
+        <div class="item-image">
+          <img [src]="item.book.imageUrl">
         </div>
+        <div class="item-details">
+          <div class="item-name">{{item.book.name}}</div>
+          <div class="item-quantity">Quantità: {{item.quantity}}</div>
+          <div class="item-price">Prezzo: €{{item.book.price}}</div>
+        </div>
+      </li>
+    </ul>
+    <div class="summary">
+        <h3>Resoconto dell'ordine</h3>
+      <div class="id-order">Id: {{order.id}}</div>
+      <br>
+      <div class="total-quantity">Quantità totale: {{order.items.length}}</div>
+      <br>
+      <div class="total-price">Prezzo totale: €{{order.totalPrice}}</div>
+      <div>
+        <default-button class="delete" bgColor="#e61919" text="Elimina Ordine" (click)="deleteOrder(order.id)">Elimina ordine</default-button>
+      </div>
     </div>
-    
-    
+    <hr class="separator">
+  </div>
 </div>

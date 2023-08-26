@@ -2,15 +2,19 @@
     <div class="container">
         <a routerLink="/" class="logo">Welcome to Read Shop!</a>
         <nav>
-            <ul>
+            <ul>                
                 <li *ngIf="!isAuth">
                     <a routerLink="/login">Login</a>
                 </li>
+                <li *ngIf="!isAuth">
+                    <a routerLink="/register">Sign in</a>
+                </li>
                 <li *ngIf="isAuth" class="menu-container">
-                    <a routerLink="/dashboard">{{user.name}}</a>
+                    <a routerLink="/profile">{{user.name}}</a>
                     <div class="menu">
                         <a routerLink="/profile">Profile</a>
                         <a routerLink="/orders">Orders</a>
+                        <a *ngIf="isAdmin" routerLink="/addNewBook">Add Book</a>
                         <a (click)="logout()">Logout</a>
                     </div>
                 </li>

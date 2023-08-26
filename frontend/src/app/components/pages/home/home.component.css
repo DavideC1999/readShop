@@ -16,10 +16,10 @@ ul{
 }
 
 li a{
-    height: 22.5rem;
-    width: 15rem;
+    height: 25rem;
+    width: 13rem;
     border: 1px solid whitesmoke;
-    /*border-radius: 0rem;*/
+    border-radius: 2rem;
     margin: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@ li a img{
     margin-top: 0.3rem;
     padding: 0.5rem 1rem;
     position: relative;
-    height: 7rem;
+    height: 100%;
 }
 
 .favorite{
@@ -75,4 +75,9 @@ li a img{
 .name{
     color: black;
     font-size: 1.5rem;
+}
+
+.info{
+    color: gray;
+    font-size: 1rem;
 }

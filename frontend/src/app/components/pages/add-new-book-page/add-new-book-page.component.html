@@ -7,38 +7,30 @@
                 [showErrorsWhen]="isSubmitted"
                 label="Nome libro">
             `</text-input>
-        
-            <text-input
-                [control]="fc.price"
-                [showErrorsWhen]="isSubmitted"
-                label="Prezzo">
-            `</text-input>
-        
-        
+
             <text-input
                 [control]="fc.author"
                 [showErrorsWhen]="isSubmitted"
                 label="Autore">
             `</text-input>
-        
-            <text-input
-                [control]="fc.genre"
-                [showErrorsWhen]="isSubmitted"
-                label="Genere">
-            `</text-input>
-            
-            <text-input
-                [control]="fc.description"
-                [showErrorsWhen]="isSubmitted"
-                label="Descrizione">
-            `</text-input>
 
+            <text-input
+                [control]="fc.price"
+                [showErrorsWhen]="isSubmitted"
+                label="Prezzo €">
+            `</text-input>            
             <text-input
                 [control]="fc.ISBN"
                 [showErrorsWhen]="isSubmitted"
                 label="ISBN">
             `</text-input>
-            
+
+            <text-input
+                [control]="fc.genre"
+                [showErrorsWhen]="isSubmitted"
+                label="Genere">
+            `</text-input>
+
             <text-input
                 [control]="fc.releaseYear"
                 [showErrorsWhen]="isSubmitted"
@@ -46,15 +38,15 @@
             `</text-input>
 
             <text-input
-                [control]="fc.favorite"
+                [control]="fc.description"
                 [showErrorsWhen]="isSubmitted"
-                label="Preferito">
+                label="Descrizione">
             `</text-input>
-
+            
             <text-input
                 [control]="fc.imageUrl"
                 [showErrorsWhen]="isSubmitted"
-                label="url immagine">
+                label="Url immagine">
             `</text-input>
             <default-button text="Aggiungi"></default-button>
       </form>

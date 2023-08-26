@@ -50,7 +50,11 @@ router.post('/register', asyncHandler( async (req, res) => {
       }
   
       const dbUser = await UserModel.create(newUser);
-      res.send(generateTokenResponse(dbUser));
+      if(dbUser){
+        res.send(generateTokenResponse(dbUser))
+      }else{
+        res.status(HTTP_BAD_REQUEST).send("Utente non registrato, riprova")
+      }
     }
   ))
 

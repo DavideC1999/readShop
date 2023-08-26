@@ -5,14 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import { BOOKS_BY_SEARCH_URL, BOOKS_URL, BOOK_ADD_NEW_URL, BOOK_BY_ID_URL } from '../shared/constants/urls';
 import { Book } from '../shared/models/Book';
 import { IBook } from '../shared/interfaces/IBook';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  toastrService: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastrService:ToastrService) { }
 
   getAll(): Observable<Book[]> {
     return this.http.get<Book[]>(BOOKS_URL);
@@ -31,13 +31,14 @@ export class BookService {
       tap({
         next: (book) => {
           this.toastrService.success(
-            `Libro ${book.name} aggiunto con successo!`)
+            `Libro ${book.name} aggiunto con successo!`
+          )
+          window.location.reload()
         },
         error: (errorResponse) =>{
           this.toastrService.error(errorResponse.error, 'Libro non aggiunto');
         }
       })
-    )
+    ).subscribe();
   }
-
 }

@@ -51,7 +51,8 @@ export class RegisterPageComponent implements OnInit {
       email: fv.email,
       password: fv.password,
       confirmPassword: fv.confirmPassword,
-      address: fv.address
+      address: fv.address,
+      isAdmin: false
     };
 
     this.userService.register(user).subscribe(_ => {

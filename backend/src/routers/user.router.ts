@@ -72,7 +72,7 @@ const generateTokenResponse = (user: User) => {
         email: user.email,
         name: user.name,
         address: user.address,
-        idAdmin: user.isAdmin,
+        isAdmin: user.isAdmin,
         token: token
     };
 }

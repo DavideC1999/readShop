@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   
   cartQuantity = 0;
   user!:User;
+
   constructor(cartService: CartService, private userService:UserService, private router: Router){
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    console.log(this.isAdmin)
+    console.log(this.user.isAdmin)
   }
 
   logout(){

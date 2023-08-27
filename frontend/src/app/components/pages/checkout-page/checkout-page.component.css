@@ -24,11 +24,13 @@
     flex-basis: 100%;
     display: flex;
     justify-content: center;
+    margin-right: 3rem;
   }
   
   .buttons{
     margin: 2rem;
     width: 35rem;
+    background-color: #0079C1;
   }
   
   button{

@@ -21,6 +21,7 @@
     width: 5rem;
     object-fit: fill;
     margin-right: 1rem;
+    border-radius: 0.5rem;
   }
   
   .summary {

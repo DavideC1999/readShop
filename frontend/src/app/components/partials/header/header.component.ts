@@ -23,9 +23,7 @@ export class HeaderComponent implements OnInit {
       this.user = newUser
     })
   }
-  ngOnInit(): void {
-    console.log(this.user.isAdmin)
-  }
+  ngOnInit(): void {}
 
   logout(){
     this.userService.logout()

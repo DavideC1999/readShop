@@ -35,6 +35,7 @@ li img{
     width: 5rem;
     height: 5rem;
     object-fit: fill;
+    border-radius: 1rem;
 }
 
 li div{
@@ -121,4 +122,8 @@ li .remove-button:hover{
 .checkout a:hover{
     opacity: 1;
     cursor: pointer;
+}
+
+.check1{
+    background-color: #0079C1 !important;
 }

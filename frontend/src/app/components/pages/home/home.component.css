@@ -16,10 +16,10 @@ ul{
 }
 
 li a{
-    height: 25rem;
+    height: 28rem;
     width: 13rem;
     border: 1px solid whitesmoke;
-    border-radius: 2rem;
+    border-radius: 1rem;
     margin: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -64,11 +64,12 @@ li a img{
 .price{
     position: absolute;
     bottom: 0;
-    left: 0.9rem;
+    left: 1rem;
     background: white;
     padding: 0.3rem 100% 0 0;
     color: #414141;
     margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
     font-size: 1.1rem
 }
 

@@ -42,14 +42,12 @@ router.get("/:bookId", asyncHandler(
 
 router.post("/addNewBook", asyncHandler(async (req, res) => {
     const {name, price, author, genre, description, ISBN, releaseYear, imageUrl} = req.body
-    console.log(name)
     const book = await BookModel.findOne({ISBN})
 
     if(book){
         res.status(HTTP_BAD_REQUEST).send('Book is already in database!')
         return
     }
-    console.log(name)
     const newBook:Book = {
         name: name,
         price: price,
@@ -64,7 +62,6 @@ router.post("/addNewBook", asyncHandler(async (req, res) => {
 
     
     const dbBook = await BookModel.create(newBook)
-    console.log(dbBook.name)
     if (dbBook) {
         res.send(dbBook)
     } else {

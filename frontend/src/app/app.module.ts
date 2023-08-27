@@ -27,6 +27,7 @@ import { OrderItemsListComponent } from './components/partials/order-items-list/
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AddNewBookPageComponent } from './components/pages/add-new-book-page/add-new-book-page.component';
 import { OrdersComponent } from './components/pages/orders-page/orders.component';
+import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { OrdersComponent } from './components/pages/orders-page/orders.component
     CheckoutPageComponent,
     OrderItemsListComponent,
     AddNewBookPageComponent,
-    OrdersComponent
+    OrdersComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

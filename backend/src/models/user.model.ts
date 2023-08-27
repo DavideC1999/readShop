@@ -1,12 +1,16 @@
 import {Schema, model} from 'mongoose';
+import { ObjectId } from 'mongoose';
 
 export interface User{
-    // id: string
     email:string;
     password: string;
     name:string;
     address:string;
     isAdmin:boolean;
+}
+
+export interface UserDocument extends Document, User {
+    _id: ObjectId;
 }
 
 export const UserSchema = new Schema<User>({
@@ -25,4 +29,4 @@ export const UserSchema = new Schema<User>({
     }
 });
 
-export const UserModel = model<User>('user', UserSchema);
+export const UserModel = model<UserDocument>('user', UserSchema);

@@ -1,0 +1,25 @@
+<app-title title="Profilo utente"></app-title>
+
+<div *ngIf="user" class="summary">
+    
+    <div class="item">
+      <span class="label">Nome:</span>
+      <span class="value">{{user.name}}</span>
+    </div>
+    <div class="item">
+      <span class="label">Email:</span>
+      <span class="value">{{user.email}}</span>
+    </div>
+    <div class="item">
+      <span class="label">Address:</span>
+      <span class="value">{{user.address}}</span>
+    </div>
+    <div class="item">
+      <span class="label">isAdmin:</span>
+      <span class="value">{{user.isAdmin}}</span>
+    </div>
+    <div class="item">
+      <span class="label">Id:</span>
+      <span class="value">{{user.id}}</span>
+    </div>
+</div>

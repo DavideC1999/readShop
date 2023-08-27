@@ -2,7 +2,7 @@ import { Router } from "express";
 import { sample_users } from "../data";
 import jwt from 'jsonwebtoken'
 import asyncHandler from "express-async-handler";
-import { User, UserModel } from "../models/user.model";
+import { User, UserDocument, UserModel } from "../models/user.model";
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
 import bcrypt from 'bcryptjs'
 
@@ -18,6 +18,18 @@ router.get("/seed", asyncHandler( async (req, res) => { // la connessione tra il
        await UserModel.create(sample_users);
        res.send("Seed is Done!");
    }))
+
+  /*router.post("/editUser", asyncHandler(async(req, res) => {
+    const {id} = req.body
+
+    const user = await UserModel.findOne({ _id: id })
+
+    if(user){
+      res.send(user)
+    }else{
+      res.status(HTTP_BAD_REQUEST).send("Utente non trovato, riprova")
+    }
+  }))*/
 
 router.post("/login", asyncHandler( async (req, res) => {
     const {email, password} = req.body
@@ -41,7 +53,6 @@ router.post('/register', asyncHandler( async (req, res) => {
       const enPassword = await bcrypt.hash(password, 10);
 
       const newUser:User = {
-        //id: '',
         name,
         email: email.toLowerCase(),
         password: enPassword,
@@ -55,12 +66,11 @@ router.post('/register', asyncHandler( async (req, res) => {
       }else{
         res.status(HTTP_BAD_REQUEST).send("Utente non registrato, riprova")
       }
-    }
-  ))
+}))
 
-const generateTokenResponse = (user: User) => {
+const generateTokenResponse = (user: UserDocument) => {
     const token = jwt.sign({
-        //id: user.id,
+        id: user._id,
         email: user.email,
         isAdmin: user.isAdmin 
     }, process.env.JWT_SECRET!, { 
@@ -68,7 +78,7 @@ const generateTokenResponse = (user: User) => {
     }) 
 
     return {
-        //id: user.id,
+        id: user._id,
         email: user.email,
         name: user.name,
         address: user.address,

@@ -1,0 +1,31 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.item {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem; /* Add some space between each item */
+  font-size: 22px; /* Adjust font size as needed */
+  text-align: left; /* Left-align the text within each item */
+}
+
+.label {
+  font-weight: bold;
+  margin-right: 0.5rem; /* Add some space between the label and value */
+}
+
+.delete{
+  margin-top: 2rem;
+}
+
+.default-button {
+  margin-top: 1rem; /* Add some space above the button */
+}

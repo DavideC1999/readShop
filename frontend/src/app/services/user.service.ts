@@ -37,7 +37,7 @@ export class UserService {
           )
         },
         error: (errorResponse) =>{
-          this.toastrService.error(errorResponse.error, 'Login Failed');
+          this.toastrService.error(errorResponse.error, 'Login fallito, riprova');
         }
       })
     );

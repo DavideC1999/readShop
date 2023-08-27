@@ -5,7 +5,7 @@ export const dbConnect = () =>{
         useNewUrlParser: true,
         useUnifiedTopology: true
     } as ConnectOptions).then(
-        () => console.log("connection successfully"),
+        () => console.log("Connessione con il DB avvenuta con Successo"),
         (error) => console.log(error)
     )
 } 

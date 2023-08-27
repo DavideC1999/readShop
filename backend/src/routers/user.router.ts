@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { sample_users } from "../data";
 import jwt from 'jsonwebtoken'
 import asyncHandler from "express-async-handler";
 import { User, UserDocument, UserModel } from "../models/user.model";
@@ -7,29 +6,6 @@ import { HTTP_BAD_REQUEST } from "../constants/http_status";
 import bcrypt from 'bcryptjs'
 
 const router = Router();
-
-router.get("/seed", asyncHandler( async (req, res) => { // la connessione tra il database e il nostro codice è asincrona
-    const usersCount = await UserModel.countDocuments();
-       if(usersCount > 0){
-           res.send("Seed is already done!");
-           return;
-       }
-   
-       await UserModel.create(sample_users);
-       res.send("Seed is Done!");
-   }))
-
-  /*router.post("/editUser", asyncHandler(async(req, res) => {
-    const {id} = req.body
-
-    const user = await UserModel.findOne({ _id: id })
-
-    if(user){
-      res.send(user)
-    }else{
-      res.status(HTTP_BAD_REQUEST).send("Utente non trovato, riprova")
-    }
-  }))*/
 
 router.post("/login", asyncHandler( async (req, res) => {
     const {email, password} = req.body

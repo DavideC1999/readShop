@@ -1,21 +1,9 @@
 import { Router } from "express";
-import { sample_books, sample_users } from "../data";
 import asyncHandler from "express-async-handler";
 import { Book, BookModel } from "../models/book.model";
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
 
 const router = Router();
-
-router.get("/seed", asyncHandler( async (req, res) => { // la connessione tra il database e il nostro codice è asincrona
- const booksCount = await BookModel.countDocuments();
-    if(booksCount > 0){
-        res.send("Seed is already done!");
-        return;
-    }
-
-    await BookModel.create(sample_books);
-    res.send("Seed is Done!");
-}))
 
 router.get("/", asyncHandler( async (req, res) => {
     const searchRegex = new RegExp(req.params.searchTerm, 'i')
@@ -45,7 +33,7 @@ router.post("/addNewBook", asyncHandler(async (req, res) => {
     const book = await BookModel.findOne({ISBN})
 
     if(book){
-        res.status(HTTP_BAD_REQUEST).send('Book is already in database!')
+        res.status(HTTP_BAD_REQUEST).send('Il libro già esiste nel database!')
         return
     }
     const newBook:Book = {

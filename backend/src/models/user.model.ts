@@ -1,4 +1,4 @@
-import {Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { ObjectId } from 'mongoose';
 
 export interface User{

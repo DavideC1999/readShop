@@ -1,6 +1,5 @@
-import {Schema, model, Types} from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { Book, bookSchema } from './book.model';
-import { OrderStatusEnum } from '../constants/order_status';
 
 export interface OrderItem{
     book: Book;

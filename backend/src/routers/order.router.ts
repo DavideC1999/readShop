@@ -5,25 +5,28 @@ import { OrderModel } from "../models/order.mode";
 import auth from '../middlewares/auth.mid'
 
 const router = Router()
-router.use(auth)
+router.use(auth) // azioni eseguibili solo se l'utente è autenticato
 
+// enpoint per la creazione di un ordine. Quando l'utente effettua il pagamento
 router.post('/create', asyncHandler( async (req:any, res:any) => {
     const requestOrder = req.body
 
-    if(requestOrder.items.length <= 0){
+    if(requestOrder.items.length <= 0){ // l'ordine deve essere creato solo se ci sono elementi nel carrello
         res.status(HTTP_BAD_REQUEST).send('Il carrello è vuoto!')
         return;
     }
 
-    const newOrder = new OrderModel({...requestOrder})
-    await newOrder.save()
+    const newOrder = new OrderModel({...requestOrder}) // nuova struttura di tipo orderModel
+    await newOrder.save() // crea l'ordine nel db
     res.send(newOrder)
 }))
 
-router.post('/getAllOrders', asyncHandler( async (req:any, res: any) => {
-    const {name, address} = req.body
+// endpoint per ottenere tutti gli ordini
+router.post('/', asyncHandler( async (req:any, res: any) => {
+    const {name, address} = req.body // ottiene l'ordine dal nome e l'indirizzo dell'utente che lo ha effettuato
+    // la coppia nome e indirizzo dovrebbe dare univocità
 
-    const orders = await OrderModel.find({ name: name, address: address })
+    const orders = await OrderModel.find({ name: name, address: address }) // ricerca nel db
 
     if (orders) {
         res.send(orders);
@@ -33,9 +36,10 @@ router.post('/getAllOrders', asyncHandler( async (req:any, res: any) => {
 
 }))
 
+// endpoint per la cancellazione di un ordine
 router.post('/deleteOrder', asyncHandler(async(req:any, res:any) => {
 
-    const {id} = req.body
+    const {id} = req.body // id dell'ordine da cancellare richiesto
 
     const result = await OrderModel.deleteOne({ _id: id });
 

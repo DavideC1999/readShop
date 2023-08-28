@@ -11,5 +11,5 @@ export const USER_REGISTER_URL = USERS_URL + '/register'
 
 export const ORDERS_URL = BASE_URL + '/api/orders'
 export const ORDER_CREATE_URL = ORDERS_URL + '/create'
-export const ORDER_GET_ALL_URL = ORDERS_URL + '/getAllOrders'
+export const ORDER_GET_ALL_URL = ORDERS_URL + '/'
 export const ORDER_DELETE_URL = ORDERS_URL + '/deleteOrder'

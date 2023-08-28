@@ -1,9 +1,9 @@
 .container{
     padding: 0.1rem 10% 100% 10%;
     height: 20rem;
-    /*border: 1px solid #25a345;*/
+    /*border: 1px solid #D74D6D;*/
     border-radius: 1rem;
-    margin: 5rem 10% 10% 10%;
+    margin: 3rem 10% 10% 10%;
 }
 
 ul{
@@ -20,11 +20,11 @@ li a{
     width: 13rem;
     border: 1px solid whitesmoke;
     border-radius: 1rem;
-    margin: 0.5rem;
+    margin: 0.6rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    color: #25a345;
+    color: #D74D6D;
 }
 
 li a:hover{

@@ -16,10 +16,6 @@ form{
     justify-content: center;
 }
 
-.error-list{
-    color: red;
-}
-
 .register{
     display: flex;
     justify-content: center;

@@ -7,9 +7,11 @@ import bcrypt from 'bcryptjs'
 
 const router = Router();
 
+
+// endpoint per il login dell'utente
 router.post("/login", asyncHandler( async (req, res) => {
-    const {email, password} = req.body
-    const user = await UserModel.findOne({email})
+    const {email, password} = req.body // recupero email e password 
+    const user = await UserModel.findOne({email}) // ricerca utente se db
 
     if(user && (await bcrypt.compare(password, user.password))){
         res.send(generateTokenResponse(user))

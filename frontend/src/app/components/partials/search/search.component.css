@@ -6,7 +6,7 @@ div{
 }
 
 input{
-    border-radius: 10rem 0 0 10rem;
+    border-radius: 3rem 0 0 3rem;
     border: none;
     height: 3rem;
     width: 20rem;
@@ -18,13 +18,12 @@ input{
 }
 
 div button{
-    color: gray;
     height: 3rem;
     width: 5rem;
     font-size: 1rem;
     border-radius: 0 10rem 10rem 0;
     border: none;
-    background-color: #25a345;
+    background-color: #6DD64C;
     color: white;
     opacity: 0.8;
     outline: none;

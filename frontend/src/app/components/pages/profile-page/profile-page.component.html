@@ -14,9 +14,13 @@
       <span class="label">Address:</span>
       <span class="value">{{user.address}}</span>
     </div>
-    <div class="item">
-      <span class="label">isAdmin:</span>
-      <span class="value">{{user.isAdmin}}</span>
+    <div *ngIf="user.isAdmin" class="item">
+      <span class="label">Ruolo:</span>
+      <span class="value">Amministratore</span>
+    </div>
+    <div *ngIf="!user.isAdmin" class="item">
+      <span class="label">Ruolo:</span>
+      <span class="value">Utente</span>
     </div>
     <div class="item">
       <span class="label">Id:</span>

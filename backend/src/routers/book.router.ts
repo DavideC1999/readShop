@@ -5,12 +5,19 @@ import { HTTP_BAD_REQUEST } from "../constants/http_status";
 
 const router = Router();
 
-router.get("/", asyncHandler( async (req, res) => {
-    const searchRegex = new RegExp(req.params.searchTerm, 'i')
-    const books = await BookModel.find({name: {$regex: searchRegex}})
-    res.send(books);
+// endpoint per ottenere la lista di tutti i libri presenti nel db
+router.get("/", asyncHandler( async (req, res) => { // la comunicazione asincrona viene utilizzata nelle comunicazioni con il db
+    const searchRegex = new RegExp(req.params.searchTerm, 'i') // espressione regolare case insensitive
+    
+    try {
+        const books = await BookModel.find({name: {$regex: searchRegex}}) // cerca il libro nel db
+        res.send(books); // restituisce il libro trovato
+    } catch (error) {
+        res.status(500).send(error); // ritorna l'errore
+    }
 }))
 
+// endopoint utilizzato per la Search. Il parametro viene passato sull'url
 router.get("/search/:searchTerm", asyncHandler( async(req, res) =>{
     const searchTerm = req.params.searchTerm
     try {
@@ -21,22 +28,26 @@ router.get("/search/:searchTerm", asyncHandler( async(req, res) =>{
     }
 }))
 
-router.get("/:bookId", asyncHandler(
-    async (req,res) => {
+// endpoint per la ricerca di un libro by id
+router.get("/:bookId", asyncHandler(async (req,res) => {
+    try {
         const book = await BookModel.findById(req.params.bookId)
-         res.send(book)
+        res.send(book);
+    } catch (error) {
+        res.status(500).send(error);
     }
-))
+}))
 
+// endpoint POST per aggiungere un nuovo libro al db. Solo se utente admin
 router.post("/addNewBook", asyncHandler(async (req, res) => {
     const {name, price, author, genre, description, ISBN, releaseYear, imageUrl} = req.body
-    const book = await BookModel.findOne({ISBN})
+    const book = await BookModel.findOne({ISBN}) // l'ISBM è univoco
 
     if(book){
-        res.status(HTTP_BAD_REQUEST).send('Il libro già esiste nel database!')
+        res.status(HTTP_BAD_REQUEST).send('Il libro è già esiste nel database!')
         return
     }
-    const newBook:Book = {
+    const newBook:Book = { // creo una nuova struttura Book con i dati arrivati
         name: name,
         price: price,
         author: author,
@@ -47,9 +58,8 @@ router.post("/addNewBook", asyncHandler(async (req, res) => {
         imageUrl: imageUrl,
         favorite: false
     }
-
     
-    const dbBook = await BookModel.create(newBook)
+    const dbBook = await BookModel.create(newBook) // aggiunge il libro al db
     if (dbBook) {
         res.send(dbBook)
     } else {

@@ -11,7 +11,7 @@ export class DefaultButtonComponent {
   @Input()
   text:string = 'Submit'
   @Input()
-  bgColor = '#25a345'
+  bgColor = '#6DD64C'
   @Input()
   color = 'white'
   @Input()

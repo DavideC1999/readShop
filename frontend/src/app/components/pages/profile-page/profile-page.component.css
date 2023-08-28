@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem; /* Add some space between each item */
-  font-size: 22px; /* Adjust font size as needed */
+  font-size: 19px; /* Adjust font size as needed */
   text-align: left; /* Left-align the text within each item */
 }
 

@@ -49,7 +49,7 @@ export class CheckoutPageComponent implements OnInit {
     this.orderService.create(this.order).subscribe({
       next: () => {
         this.toastrService.success('Pagamento effettuato correttamente!')
-        // TODO: svuotare carrello
+        this.cartService.clearCart()
         this.router.navigateByUrl('/')
       },
       error: (erroResponse) => {
@@ -57,6 +57,6 @@ export class CheckoutPageComponent implements OnInit {
       }
     })
 
-    this.cartService.clearCart()
+    
   }
 }

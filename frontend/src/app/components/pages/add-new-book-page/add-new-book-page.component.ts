@@ -47,10 +47,11 @@ export class AddNewBookPageComponent implements OnInit{
   submit(){
     this.isSubmitted = true;
     if(this.registerForm.invalid) {
-      console.log("errore")
       return;
     }
     const fv = this.registerForm.value;
+
+    // salvo i dati inseriti dall'utente nel form
     const book: IBook = {
       id: '',
       name: fv.name,

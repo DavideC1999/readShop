@@ -6,6 +6,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
   templateUrl: './text-input.component.html',
   styleUrls: ['./text-input.component.css']
 })
+// componente utilizzata per il testo nei form
 export class TextInputComponent implements OnInit {
   @Input()
   control!: AbstractControl

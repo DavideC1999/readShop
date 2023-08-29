@@ -5,9 +5,11 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './title.component.html',
   styleUrls: ['./title.component.css']
 })
+// title da aggiungere su ogni pagina
 export class TitleComponent implements OnInit {
   
   constructor(){}
+  // proprietà in input per il titolo (valori pre assegnati)
 
   @Input()
   title!: string;

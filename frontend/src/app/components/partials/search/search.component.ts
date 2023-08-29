@@ -20,7 +20,6 @@ export class SearchComponent implements OnInit {
 
   search(term:string):void{
     if(term){
-      console.log(term)
       this.router.navigateByUrl('/search/' + term)
     }else{
       this.router.navigateByUrl('/')

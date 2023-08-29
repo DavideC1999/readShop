@@ -15,40 +15,52 @@ import { tap } from 'rxjs/operators';
 export class OrderService {
 
   constructor(private http: HttpClient, private toastrService:ToastrService) { }
+
+  // Metodo per creare un nuovo ordine
   create(order: Order){
-    const requ = this.http.post<Order>(ORDER_CREATE_URL, order)
-    return requ
+    // richiesta http all'endpoint con le informazioni sull'ordine come parametri della richiesta
+    const req = this.http.post<Order>(ORDER_CREATE_URL, order)
+    return req
   }
 
+  // Metodo per ottenere tutti gli ordini dell'utente corrente
   getAllOrders(data: UserService){
+    // Ottieni l'utente corrente dal servizio UserService
     const currentUser = data.currentUser;
-
+    // Crea i dati da inviare nella richiesta HTTP
+    // nota: gli ordini vengono filtrati in base al nome e all'indirizzo dell'utente.
+    // essi sono univoci (per ipotesi) - potrebbe essere utilizzato anche l'id utente
     const requestData = {
       name: currentUser.name,
       address: currentUser.address,
     };
-    
+    // Effettua una richiesta HTTP POST per ottenere tutti gli ordini dell'utente corrente
     return this.http.post<Order[]>(ORDER_GET_ALL_URL, requestData);
   }
 
+  // Metodo per eliminare un ordine
   deleteOrder(id: string){
+    // Crea i dati da inviare nella richiesta HTTP
+    // viene inviato l'id dell'ordine da eliminare 
     const requestData = {
       id: id,
     };
-
+    // Effettua una richiesta HTTP POST per eliminare l'ordine
     return this.http.post(ORDER_DELETE_URL, requestData, { responseType: 'text' }).pipe(
       tap({
-        next: () => {
+        next: () => { // successo
           
           //window.location.reload()
+          // pop-up di successo
           this.toastrService.success(
             'Ordine eliminato con successo'
           )
         },
-        error: (errorResponse: { error: string | undefined; }) =>{
-          this.toastrService.error(errorResponse.error, 'Libro non aggiunto');
+        error: (errorResponse: { error: string | undefined; }) =>{// errore
+          // mostra pop-up di errore
+          this.toastrService.error(errorResponse.error, 'Ordine non eliminato');
         }
       })
-    ).subscribe();
+    ).subscribe(); // Sottoscrive all'Observable per eseguire effettivamente la richiesta
     }
 }

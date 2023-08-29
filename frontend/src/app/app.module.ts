@@ -24,7 +24,7 @@ import { LoadingComponent } from './components/partials/loading/loading.componen
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
-import { AuthInterceptor } from './auth/auth.interceptor';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AddNewBookPageComponent } from './components/pages/add-new-book-page/add-new-book-page.component';
 import { OrdersComponent } from './components/pages/orders-page/orders.component';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';

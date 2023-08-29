@@ -13,6 +13,7 @@ router.post("/login", asyncHandler( async (req, res) => {
     const {email, password} = req.body // recupero email e password 
     const user = await UserModel.findOne({email}) // ricerca utente se db
 
+    // compara la password in chiaro inviata dall'utente con quella hashata presente nel db
     if(user && (await bcrypt.compare(password, user.password))){
         res.send(generateTokenResponse(user))
     }else{
@@ -20,6 +21,7 @@ router.post("/login", asyncHandler( async (req, res) => {
     }
 }))
 
+// endpoint per la registrazione
 router.post('/register', asyncHandler( async (req, res) => {
       const {name, email, password, address, isAdmin} = req.body;
       const user = await UserModel.findOne({email});
@@ -46,6 +48,7 @@ router.post('/register', asyncHandler( async (req, res) => {
       }
 }))
 
+// genera un token che viene assegnato all'utente nel momento in cui effettua il login
 const generateTokenResponse = (user: UserDocument) => {
     const token = jwt.sign({
         id: user._id,
@@ -55,7 +58,7 @@ const generateTokenResponse = (user: UserDocument) => {
         expiresIn: "30d"
     }) 
 
-    return {
+    return { // struttura che rimando all'utente
         id: user._id,
         email: user.email,
         name: user.name,

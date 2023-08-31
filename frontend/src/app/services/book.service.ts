@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { sample_books } from '../data';
 import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BOOKS_BY_SEARCH_URL, BOOKS_URL, BOOK_ADD_NEW_URL, BOOK_BY_ID_URL } from '../shared/constants/urls';

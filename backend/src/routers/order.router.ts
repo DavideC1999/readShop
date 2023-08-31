@@ -1,7 +1,7 @@
 import { Router } from "express";
 import asyncHandler from 'express-async-handler'
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
-import { OrderModel } from "../models/order.mode";
+import { OrderModel } from "../models/order.model";
 import auth from '../middlewares/auth.mid'
 
 const router = Router()
@@ -23,10 +23,10 @@ router.post('/create', asyncHandler( async (req:any, res:any) => {
 
 // endpoint per ottenere tutti gli ordini
 router.post('/', asyncHandler( async (req:any, res: any) => {
-    const {name, address} = req.body // ottiene l'ordine dal nome e l'indirizzo dell'utente che lo ha effettuato
-    // la coppia nome e indirizzo dovrebbe dare univocità
+    // ottiene l'ordine dall'id dell'utente che lo ha effettuato
+    const {userId} = req.body
 
-    const orders = await OrderModel.find({ name: name, address: address }) // ricerca nel db
+    const orders = await OrderModel.find({userId}) // cerca gli ordini per quell'utente nel db
 
     if (orders) {
         res.send(orders);

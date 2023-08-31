@@ -14,8 +14,7 @@ export class AuthGuard{
   // di controllare se un utente può o non accedere a una determinata rotta
   // viene richiamata in 'app-routing-module.ts' quando si creare una nuova rotta
   // che richiede l'autenticazione per essere navigata
-  canActivate(
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
     // Controlla se esiste un token nell'utente corrente
     if(this.userService.currentUser.token) return true; // Se c'è un token, l'accesso è consentito, quindi ritorna true

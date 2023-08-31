@@ -28,12 +28,12 @@ export class OrderService {
     // Ottieni l'utente corrente dal servizio UserService
     const currentUser = data.currentUser;
     // Crea i dati da inviare nella richiesta HTTP
-    // nota: gli ordini vengono filtrati in base al nome e all'indirizzo dell'utente.
-    // essi sono univoci (per ipotesi) - potrebbe essere utilizzato anche l'id utente
+    // nota: gli ordini vengono filtrati in base all'id dell'utente memorizzato nel db per ogni ordine.
+    // esso garantisce che l'ordine sia relativo al singolo utente
     const requestData = {
-      name: currentUser.name,
-      address: currentUser.address,
+      userId: currentUser.id,
     };
+
     // Effettua una richiesta HTTP POST per ottenere tutti gli ordini dell'utente corrente
     return this.http.post<Order[]>(ORDER_GET_ALL_URL, requestData);
   }

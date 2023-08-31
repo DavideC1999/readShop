@@ -17,6 +17,7 @@ export const OrderItemSchema = new Schema<OrderItem>(
 
 export interface Order{
     id: string
+    userId: string
     items: OrderItem[]
     totalPrice: number
     name: string
@@ -26,6 +27,7 @@ export interface Order{
 }
 
 const OrderSchema = new Schema<Order>({
+    userId: {type: String, required: true},
     name: {type: String, required: true},
     address: {type: String, required: true},
     totalPrice: {type: Number, required: true},

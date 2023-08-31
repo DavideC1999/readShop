@@ -10,6 +10,7 @@ import { IBook } from 'src/app/shared/interfaces/IBook';
   templateUrl: './add-new-book-page.component.html',
   styleUrls: ['./add-new-book-page.component.css']
 })
+// pagina navigabile dall'admin per aggiungere un nuovo libro
 export class AddNewBookPageComponent implements OnInit{
 
   registerForm!: FormGroup;
@@ -25,6 +26,7 @@ export class AddNewBookPageComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+    // inizializzazione del form con validatori
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
@@ -45,6 +47,7 @@ export class AddNewBookPageComponent implements OnInit{
   }
 
   submit(){
+    // controlli sulla form
     this.isSubmitted = true;
     if(this.registerForm.invalid) {
       return;
@@ -64,8 +67,8 @@ export class AddNewBookPageComponent implements OnInit{
       favorite: fv.favorite,
       imageUrl: fv.imageUrl
     };
-    this.bookService.addNewBook(book)
-    this.router.navigateByUrl("/")
+    this.bookService.addNewBook(book) // richiama il book service
+    this.router.navigateByUrl("/") // indirizzo l'utente alla home page
   }
 
 

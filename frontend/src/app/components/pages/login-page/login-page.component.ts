@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup
   isSubmitted = false
-  returnUrl = '';
+  returnUrl:string = '/';
   
   constructor(private formBuilder: FormBuilder, 
     private userService:UserService, 
@@ -26,7 +26,7 @@ export class LoginPageComponent implements OnInit {
       password: ['', Validators.required]
     })
 
-    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUlr
+    this.returnUrl = this.returnUrl + this.activatedRoute.snapshot.queryParams.returnUrl;
   }
 
   get fc(){
@@ -36,12 +36,10 @@ export class LoginPageComponent implements OnInit {
   submit(){
     this.isSubmitted = true; // flag per mostrare l'errore (se true)
     if(this.loginForm.invalid) return
-
+    
     // richiamo lo User service e indirizzo l'utente dove era prima
-    this.userService.login({
-      email:this.fc.email.value,
-      password: this.fc.password.value}).subscribe(() => {
+    this.userService.login({email:this.fc.email.value,password: this.fc.password.value}).subscribe(() => {
         this.router.navigateByUrl(this.returnUrl)
-      });
-    }
+    });
+  }
 }

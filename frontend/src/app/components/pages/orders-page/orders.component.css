@@ -54,6 +54,6 @@
   .separator {
     border: none;
     height: 1px;
-    background-color: #D74D6D;
+    background-color: lightgray;
     margin: 0 0;
   }

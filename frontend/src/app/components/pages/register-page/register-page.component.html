@@ -5,43 +5,37 @@
             <text-input
                 [control]="fc.name"
                 [showErrorsWhen]="isSubmitted"
-                label="Name">
-            `</text-input>
+                label="Name"></text-input>
         
             <text-input
                 [control]="fc.email"
                 [showErrorsWhen]="isSubmitted"
                 label="Email"
-                type="email">
-            `</text-input>
-        
-        
+                type="email"></text-input>
+    
             <text-input
                 [control]="fc.password"
                 [showErrorsWhen]="isSubmitted"
                 label="Password"
-                type="password">
-            `</text-input>
+                type="password"></text-input>
         
             <text-input
                 [control]="fc.confirmPassword"
                 [showErrorsWhen]="isSubmitted"
                 label="Confirm Password"
-                type="password">
-            `</text-input>
+                type="password"></text-input>
             
             <text-input
                 [control]="fc.address"
                 [showErrorsWhen]="isSubmitted"
-                label="Address">
-            `</text-input>
+                label="Address"></text-input>
                         
             <default-button text="Register"></default-button>
             
             <div class="login">
                 Already a user? &nbsp;
                 <a routerLink="/login" [queryParams]="{returnUrl: returnUrl}">
-                Login Here
+                Login
                 </a>
             </div>
       </form>

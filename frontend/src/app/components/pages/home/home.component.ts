@@ -9,19 +9,23 @@ import { Observable } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+// home page del sito
 export class HomeComponent implements OnInit {
   
   books: Book[] = [];
   constructor(private bookService: BookService, activatedRoute: ActivatedRoute){
     let bookObservable: Observable<Book[]>;
+    // i libri presenti nella home page vengono filtrati in base al search term
+    // il search term è il termine cercato dall'utente e posto nell'url
     activatedRoute.params.subscribe((params) => {
-      if(params.searchTerm)
+      if(params.searchTerm)// se parametro di ricerca presente (richiesta da search bar)
         bookObservable = this.bookService.getAllBooksBySearchTerm(params.searchTerm)
+      // vegongo mostrati i liri filtrati. Il filtro è fatto sul db
       else
-        bookObservable = bookService.getAll()
+        bookObservable = bookService.getAll() // senza termine di ricerca
 
       bookObservable.subscribe((serverBooks) =>{
-        this.books = serverBooks
+        this.books = serverBooks // salvo i libri per mostrali nella home page
       })
     })
     

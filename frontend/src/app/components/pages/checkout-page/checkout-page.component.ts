@@ -12,39 +12,40 @@ import { Order } from 'src/app/shared/models/Order';
   templateUrl: './checkout-page.component.html',
   styleUrls: ['./checkout-page.component.css']
 })
+// pagina per checkout e pagamento
 export class CheckoutPageComponent implements OnInit {
+
   order: Order = new Order()
-  checkoutForm!: FormGroup
+  checkoutForm!: FormGroup // form del checkout
+  // nota: il form esiste soltanto per mostrare i dati all'utente. Non è modificabile
+  name:string = ''
+  address:string = ''
+
   constructor(private cartService: CartService, 
     private formBuilder: FormBuilder,
     private userService: UserService,
     private toastrService: ToastrService,
     private orderService: OrderService,
     private router: Router){
-      const cart = cartService.getCart()
-      this.order.items = cart.items
-      this.order.totalPrice = cart.totalPrice
+      const cart = cartService.getCart() // ottengo il carrello
+      this.order.items = cart.items // salvo gli elementi nel carrello
+      this.order.totalPrice = cart.totalPrice // salvo il prezzo totale
+
+      // salvo nome e indirizzo dell'utente
+      this.name = this.userService.currentUser.name
+      this.address = this.userService.currentUser.address
     }
-  ngOnInit(): void {
-      let {name, address} = this.userService.currentUser
-      this.checkoutForm = this.formBuilder.group({
-        name: [name, Validators.required],
-        address: [address, Validators.required]
-      })
-  }
+
+  ngOnInit(): void {}
 
   get fc(){
     return this.checkoutForm.controls
   } 
 
   createOrder(){
-    if(this.checkoutForm.invalid){
-      this.toastrService.warning('Please fill the Inputs', 'Invalid Inputs')
-      return;
-    }
-
-    this.order.name = this.fc.name.value
-    this.order.address = this.fc.address.value
+    // salvo il nome e l'indirizzo dell'utente dull'ordine
+    this.order.name = this.name 
+    this.order.address = this.address
 
     this.orderService.create(this.order).subscribe({
       next: () => {
@@ -56,7 +57,5 @@ export class CheckoutPageComponent implements OnInit {
         this.toastrService.error(erroResponse.error, 'Cart')
       }
     })
-
-    
   }
 }

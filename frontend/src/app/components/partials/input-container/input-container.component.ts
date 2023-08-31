@@ -5,6 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './input-container.component.html',
   styleUrls: ['./input-container.component.css']
 })
+// stile per la text-input
 export class InputContainerComponent implements OnInit{
   @Input()
   label!: string

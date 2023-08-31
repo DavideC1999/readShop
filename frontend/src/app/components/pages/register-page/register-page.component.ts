@@ -10,10 +10,11 @@ import { PasswordsMatchValidator } from 'src/app/shared/validators/password_matc
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css']
 })
+// pagina di registrazione
 export class RegisterPageComponent implements OnInit {
 
   registerForm!:FormGroup;
-  isSubmitted = false;
+  isSubmitted = false; // variabile utilizzata per i controlli sugli errori nel form
   returnUrl = '';
 
   constructor(
@@ -24,6 +25,7 @@ export class RegisterPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // init del form con relativi validatori
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -33,19 +35,23 @@ export class RegisterPageComponent implements OnInit {
     },{
       validators: PasswordsMatchValidator('password','confirmPassword')
     });
-
-    this.returnUrl= this.activatedRoute.snapshot.queryParams.returnUrl;
+    
+    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
   }
-
+  
   get fc() {
+    // tramite l'attributo controls prendo l'errore, se presente, di quel campo
+    // esempio: il campo nome deve essere obbligatorio se non lo è viene memorizzato 
+    // in control l'errore 'required=true' per quel campo
     return this.registerForm.controls;
   }
 
   submit(){
-    this.isSubmitted = true;
+    this.isSubmitted = true; // se true mostra l'errore se presente. Viene inviata alla input validation
     if(this.registerForm.invalid) return;
 
-    const fv= this.registerForm.value;
+    // salvo i dati inseriti nel form in un'interfaccia per inviarli al backend
+    const fv = this.registerForm.value;
     const user: IUserRegister = {
       name: fv.name,
       email: fv.email,
@@ -55,6 +61,7 @@ export class RegisterPageComponent implements OnInit {
       isAdmin: false
     };
 
+    // mando i dati allo user service e indirizzo l'utente sulla pagin in cui era in precedenza
     this.userService.register(user).subscribe(_ => {
       this.router.navigateByUrl(this.returnUrl);
     })

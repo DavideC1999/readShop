@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
+// pagina di login
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup
   isSubmitted = false
@@ -19,6 +20,7 @@ export class LoginPageComponent implements OnInit {
     private router: Router){}
 
   ngOnInit(): void {
+    // init del form con relativi validatori
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -32,8 +34,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   submit(){
-    this.isSubmitted = true;
+    this.isSubmitted = true; // flag per mostrare l'errore (se true)
     if(this.loginForm.invalid) return
+
+    // richiamo lo User service e indirizzo l'utente dove era prima
     this.userService.login({
       email:this.fc.email.value,
       password: this.fc.password.value}).subscribe(() => {

@@ -16,6 +16,8 @@ export class TextInputComponent implements OnInit {
   label!: string
   @Input()
   type: 'text' | 'password' | 'email' = 'text'
+  @Input()
+  disabled:boolean = false
 
   get formControl(){
     return this.control as FormControl

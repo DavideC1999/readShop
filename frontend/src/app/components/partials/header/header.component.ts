@@ -9,24 +9,26 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+// componente della header bar
 export class HeaderComponent implements OnInit {
   
   cartQuantity = 0;
   user!:User;
 
-  constructor(cartService: CartService, private userService:UserService, private router: Router){
+  constructor(private cartService: CartService, private userService:UserService, private router: Router){
     cartService.getCartObservable().subscribe((newCart) => {
-      this.cartQuantity = newCart.totalCount
+      this.cartQuantity = newCart.totalCount // mostra pop-up con il num di elementi nel carrello
     })
 
     userService.userObservable.subscribe((newUser) =>{
-      this.user = newUser
+      this.user = newUser // ottiene l'utente per mostrare il nome sulla header
     })
   }
   ngOnInit(): void {}
 
   logout(){
     this.userService.logout()
+    this.cartService.clearCart()
     this.router.navigateByUrl('/login')
   }
 

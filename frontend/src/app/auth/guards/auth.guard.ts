@@ -15,7 +15,6 @@ export class AuthGuard{
   // viene richiamata in 'app-routing-module.ts' quando si creare una nuova rotta
   // che richiede l'autenticazione per essere navigata
   canActivate(
-    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
     // Controlla se esiste un token nell'utente corrente

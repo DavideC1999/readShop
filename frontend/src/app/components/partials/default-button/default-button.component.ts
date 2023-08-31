@@ -5,6 +5,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './default-button.component.html',
   styleUrls: ['./default-button.component.css']
 })
+// componente per il default button del sito
 export class DefaultButtonComponent {
   @Input()
   type: 'submit' | 'button' = 'submit'

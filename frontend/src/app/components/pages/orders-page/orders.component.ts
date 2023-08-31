@@ -12,6 +12,7 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
+// pagina di gestione degli ordini dell'utente
 export class OrdersComponent implements OnInit {
 
   orders: Order[] = [];
@@ -20,9 +21,9 @@ export class OrdersComponent implements OnInit {
   constructor(private orderService: OrderService,private router:Router, activatedRoute: ActivatedRoute,private userService: UserService) {
     let orderObservable: Observable<Order[]>;
     activatedRoute.params.subscribe((params) => {
-
-        orderObservable = orderService.getAllOrders(userService)
-
+        // richiedo gli ordini per l'utente attivo
+        orderObservable = orderService.getAllOrders(userService) 
+        // salvo gli ordini per mostrarli nella pagina
         orderObservable.subscribe((serverOrders) =>{
           this.orders = serverOrders
         })
@@ -30,13 +31,17 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
+  // evento di cancellazione dell'ordine con id specificato
   deleteOrder(id: number){
-    this.orderService.deleteOrder(id.toString())
+    this.orderService.deleteOrder(id.toString()) // richiamo l'order service
+
+    // richiedo la lista aggiornata degli ordini
     this.orderService.getAllOrders(this.userService).subscribe(orders => {
       this.orders = orders;
     });
-    this.router.navigateByUrl("/orders")
+
+    // La pagina potrebbe non aggiornarsi correttamente. per questo motivo la ricarico
+    window.location.reload()
   }
 
 }

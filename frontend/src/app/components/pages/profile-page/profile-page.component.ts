@@ -7,12 +7,13 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.css']
 })
+// pagina che mosta le informazioni sul profilo dell'utente
 export class ProfilePageComponent implements OnInit{
   user!: User
 
   constructor(private userService: UserService){
     userService.userObservable.subscribe((newUser) =>{
-      this.user = newUser
+      this.user = newUser // recupero l'orbservable dell'utente per mostralo nella pagina
     })
   }
   ngOnInit(): void {}

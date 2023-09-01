@@ -1,0 +1,36 @@
+table {
+  border-collapse: collapse;
+  width: 99%;
+  margin-top: 2rem;
+  margin-left: 0.7rem;
+}
+
+.table-container{
+  overflow-x: auto;
+}
+
+td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+.firstRow {
+  background-color: #D74D6D;
+}
+
+button {
+  color: #D74D6D;
+  border: 0;
+  size: 10px;
+}
+
+.btn {
+  text-align: center;
+}
+
+img{
+  width: 5rem;
+  height: 5rem;
+  object-fit: fill;
+}

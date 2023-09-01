@@ -1,6 +1,6 @@
-<header>
+<header *ngIf="showHeader">
     <div class="container">
-        <a routerLink="/" class="logo">Welcome to Read Shop!</a>
+        <a routerLink="/" class="logo">READ SHOP</a>
         <nav>
             <ul>                
                 <li *ngIf="!isAuth">
@@ -9,12 +9,14 @@
                 <li *ngIf="!isAuth">
                     <a routerLink="/register">Sign in</a>
                 </li>
+                <li *ngIf="isAdmin" class="menu-container">
+                    <a routerLink="/dashboard">Admin dashboard</a>
+                </li>
                 <li *ngIf="isAuth" class="menu-container">
-                    <a routerLink="/profile">{{user.name}}</a>
+                    <a class="profile" routerLink="/profile">{{user.name}}</a>
                     <div class="menu">
                         <a routerLink="/profile">Profilo</a>
                         <a routerLink="/orders">Ordini</a>
-                        <a *ngIf="isAdmin" routerLink="/addNewBook">Add Book</a>
                         <a (click)="logout()">Logout</a>
                     </div>
                 </li>

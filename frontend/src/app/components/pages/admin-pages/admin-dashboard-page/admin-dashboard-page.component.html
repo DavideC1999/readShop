@@ -1,0 +1,43 @@
+<div class="header">
+    <div class="container">
+      <nav>
+        <ul>
+          <li>
+            <a routerLink="/">Home Page</a>
+          </li>
+          <li>
+            <a [style.color]="contentPage === 1 ? '#D74D6D' : 'black'" (click)="submit(1)">Ordini</a>
+          </li>
+          <li>
+            <a [style.color]="contentPage === 2 ? '#D74D6D' : 'black'" (click)="submit(2)">Utenti</a>
+          </li>
+          <li>
+            <a [style.color]="contentPage === 3 ? '#D74D6D' : 'black'" (click)="submit(3)">Libri</a>
+          </li>
+          <li>
+            <a [style.color]="contentPage === 4 ? '#D74D6D' : 'black'" (click)="submit(4)">Aggiungi libro</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+  <div class="content">
+    <div *ngIf="contentPage==1">
+      <app-title title="Gestione Ordini"></app-title>
+      <admin-orders></admin-orders>
+    </div>
+    <div *ngIf="contentPage==2">
+      <app-title title="Gestione Utenti"></app-title>
+      <admin-users-page></admin-users-page>
+    </div>
+    <div *ngIf="contentPage==3">
+      <app-title title="Gestione Libri"></app-title>
+      <button mat-button color="primary" [ngClass]="{'add-button': true}" (click)="submit(4)">Aggiungi Libro +</button>
+      <admin-books-page></admin-books-page>
+    </div>
+    <div *ngIf="contentPage==4">
+        <app-title title="Aggiungi un nuovo libro"></app-title>
+        <app-add-new-book-page></app-add-new-book-page>
+    </div>
+  </div>

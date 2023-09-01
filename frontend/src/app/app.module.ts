@@ -25,9 +25,13 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-import { AddNewBookPageComponent } from './components/pages/add-new-book-page/add-new-book-page.component';
+import { AddNewBookPageComponent } from './components/pages/admin-pages/add-new-book-page/add-new-book-page.component';
 import { OrdersComponent } from './components/pages/orders-page/orders.component';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
+import { AdminDashboardPageComponent } from './components/pages/admin-pages/admin-dashboard-page/admin-dashboard-page.component';
+import { AdminOrdersComponent } from './components/pages/admin-pages/admin-orders-page/admin-orders.component';
+import { AdminUsersPageComponent } from './components/pages/admin-pages/admin-users-page/admin-users-page.component';
+import { AdminBooksPageComponent } from './components/pages/admin-pages/admin-books-page/admin-books-page.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,11 @@ import { ProfilePageComponent } from './components/pages/profile-page/profile-pa
     OrderItemsListComponent,
     AddNewBookPageComponent,
     OrdersComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    AdminDashboardPageComponent,
+    AdminOrdersComponent,
+    AdminUsersPageComponent,
+    AdminBooksPageComponent
   ],
   imports: [
     BrowserModule,

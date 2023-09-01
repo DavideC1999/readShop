@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+<div class="table-container">
+  <table>
+    <thead>
+      <tr class="firstRow">
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Autore</th>
+        <th>Genere</th>
+        <th>Anno</th>
+        <th>ISBN</th>
+        <th>Descrizione</th>
+        <th>Prezzo</th>
+        <th>imageUrl</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{book.id}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.genre}}</td>
+        <td>{{book.releaseYear}}</td>
+        <td>{{book.ISBN}}</td>
+        <td>{{book.description}}</td>
+        <td>{{book.price}}€</td>
+        <td>
+          <img [src]="book.imageUrl"/>        
+          <br>
+          <br>
+          {{book.imageUrl}}
+        </td>
+        <td class="btn" >
+          <button type="button" class="btn btn-danger" (click)="deleteBook(book.id)">
+            <i class="bi bi-trash-fill red-color"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

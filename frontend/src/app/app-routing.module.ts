@@ -7,10 +7,11 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { AuthGuard } from './guards/auth.guard';
-import { AddNewBookPageComponent } from './components/pages/add-new-book-page/add-new-book-page.component';
+import { AddNewBookPageComponent } from './components/pages/admin-pages/add-new-book-page/add-new-book-page.component';
 import { OrdersComponent } from './components/pages/orders-page/orders.component';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 import { AdminGuard } from './guards/admin.guard';
+import { AdminDashboardPageComponent } from './components/pages/admin-pages/admin-dashboard-page/admin-dashboard-page.component';
 
 const routes: Routes = [
   { path: '',component: HomeComponent },
@@ -21,9 +22,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterPageComponent },
   { path: 'checkout', component: CheckoutPageComponent, canActivate: [AuthGuard] },
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
-  { path: 'addNewBook', component: AddNewBookPageComponent, 
-    canActivate: [AdminGuard] },
-  { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] }
+  //{ path: 'addNewBook', component: AddNewBookPageComponent, canActivate: [AdminGuard] },
+  { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: AdminDashboardPageComponent, canActivate: [AdminGuard] }
 ];
 
 @NgModule({

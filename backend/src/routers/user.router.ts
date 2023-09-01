@@ -4,9 +4,34 @@ import asyncHandler from "express-async-handler";
 import { User, UserDocument, UserModel } from "../models/user.model";
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
 import bcrypt from 'bcryptjs'
+import { BookModel } from "../models/book.model";
 
 const router = Router();
 
+// endpoint per ottenere tutti gli utenti nel db. Solo per admin
+router.get("/adminGetAllUsers", asyncHandler( async (req, res) => {   
+  const users = await UserModel.find() // ottengo tutti gli utenti nel db
+
+  if (users) {
+      res.send(users);
+  } else {
+      res.send("Nessun Utente");
+  }
+}))
+
+// endpoint per eliminare un utente dal db. Solo per admin
+router.post("/adminDeleteUser", asyncHandler( async (req, res) => {   
+  const {id} = req.body // id dell'ordine da cancellare richiesto
+
+  const orders = await BookModel.deleteMany( { userId: id } ) // vengono eliminati anche gli ordini dell'utente eliminato
+  const user = await UserModel.deleteOne({ _id: id })
+
+  if (user) {
+      res.send("Utente eliminato con successo");
+  } else {
+      res.send("Nessun Utente");
+  }
+}))
 
 // endpoint per il login dell'utente
 router.post("/login", asyncHandler( async (req, res) => {

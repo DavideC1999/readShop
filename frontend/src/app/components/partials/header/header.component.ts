@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { NavigationEnd, Route, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/User';
@@ -15,6 +15,8 @@ export class HeaderComponent implements OnInit {
   cartQuantity = 0;
   user!:User;
 
+  showHeader: boolean = true;
+
   constructor(private cartService: CartService, private userService:UserService, private router: Router){
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount // mostra pop-up con il num di elementi nel carrello
@@ -23,6 +25,16 @@ export class HeaderComponent implements OnInit {
     userService.userObservable.subscribe((newUser) =>{
       this.user = newUser // ottiene l'utente per mostrare il nome sulla header
     })
+
+
+    // Subscribe to router events to determine the current URL
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const currentUrl = event.url;
+        // Check if the current URL is the admin page
+        this.showHeader = (!currentUrl.includes('/dashboard') && !currentUrl.includes('/addNewBook'));
+      }
+    });
   }
   ngOnInit(): void {}
 

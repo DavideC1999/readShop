@@ -17,6 +17,31 @@ router.get("/", asyncHandler( async (req, res) => { // la comunicazione asincron
     }
 }))
 
+// endpoint per ottenere tutti i libri nel db. Solo per admin
+router.get('/adminGetAllBooks', asyncHandler( async (req:any, res: any) => {
+    const books = await BookModel.find() // ottengo tutti i libri nel db
+
+    if (books) {
+        res.send(books);
+    } else {
+        res.send("Nessun Libro");
+    }
+}))
+
+
+router.post("/adminDeleteBook", asyncHandler( async (req, res) => {   
+    const {id} = req.body
+  
+    const book = await BookModel.deleteOne({ _id: id })
+  
+    if (book) {
+        res.send("Libro eliminato con successo");
+    } else {
+        res.send("Nessun Libro");
+    }
+  }))
+  
+
 // endopoint utilizzato per la Search. Il parametro viene passato sull'url
 router.get("/search/:searchTerm", asyncHandler( async(req, res) =>{
     const searchTerm = req.params.searchTerm

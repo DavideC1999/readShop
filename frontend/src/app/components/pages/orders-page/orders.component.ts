@@ -32,7 +32,7 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {}
   // evento di cancellazione dell'ordine con id specificato
-  deleteOrder(id: number){
+  deleteOrder(id: string){
     this.orderService.deleteOrder(id.toString()) // richiamo l'order service
 
     // richiedo la lista aggiornata degli ordini

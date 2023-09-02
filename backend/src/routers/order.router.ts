@@ -11,6 +11,8 @@ router.use(auth) // azioni eseguibili solo se l'utente è autenticato
 router.post('/create', asyncHandler( async (req:any, res:any) => {
     const requestOrder = req.body
 
+    requestOrder.status = 'IN ELABORAZIONE'
+
     if(requestOrder.items.length <= 0){ // l'ordine deve essere creato solo se ci sono elementi nel carrello
         res.status(HTTP_BAD_REQUEST).send('Il carrello è vuoto!')
         return;
@@ -48,6 +50,29 @@ router.get('/adminGetAllOrders', asyncHandler( async (req:any, res: any) => {
 }))
 
 // endpoint per la cancellazione di un ordine
+router.post('/adminChangeStatus', asyncHandler(async(req:any, res:any) => {
+    const { id } = req.body;
+    const order = await OrderModel.findOne({ _id:id });
+
+    if (order) {
+        const updateOrder = {
+            status: 'SPEDITO'
+        };
+
+        const dbOrder = await OrderModel.findOneAndUpdate({ _id: id }, updateOrder, { new: true });
+
+        if (dbOrder) {
+            res.send(dbOrder);
+        } else {
+            res.status(HTTP_BAD_REQUEST).send('Modifica non andata a buon fine');
+        }
+        return;
+    }
+
+    res.status(HTTP_BAD_REQUEST).send('Libro non modificato, il libro non esiste');
+}))
+
+// endpoint per la cancellazione di un ordine
 router.post('/deleteOrder', asyncHandler(async(req:any, res:any) => {
 
     const {id} = req.body // id dell'ordine da cancellare richiesto
@@ -59,7 +84,6 @@ router.post('/deleteOrder', asyncHandler(async(req:any, res:any) => {
     } else {
         res.send("Ordine non trovato");
     }
-
 }))
 
 export default router;

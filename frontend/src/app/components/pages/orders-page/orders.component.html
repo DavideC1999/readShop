@@ -20,10 +20,12 @@
       </li>
     </ul>
     <div class="summary">
-        <h3>Resoconto</h3>
-      <div class="id-user">Id Utente: {{order.userId}}</div>
+      <h3>Resoconto</h3>
+      <div class="order-status">Stato Ordine: {{order.status}}</div>
       <br>
       <div class="id-order">Id Ordine: {{order.id}}</div>
+      <br>
+      <div class="id-user">Id Utente: {{order.userId}}</div>
       <br>
       <div class="name">Nome utente completo: {{order.name}}</div>
       <br>
@@ -32,9 +34,10 @@
       <div class="total-quantity">Quantità totale: {{order.items.length}}</div>
       <br>
       <div class="total-price">Prezzo totale: €{{order.totalPrice}}</div>
-      <div>
+      <div *ngIf="order.status != 'SPEDITO'">
         <default-button class="delete" bgColor="#e61919" text="Elimina Ordine" (click)="deleteOrder(order.id)"></default-button>
       </div>
+      <br>
     </div>
     <hr class="separator">
   </div>

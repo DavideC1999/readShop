@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ADMIN_DELETE_BOOK_URL, ADMIN_DELETE_USER_URL, ADMIN_EDIT_BOOK_URL, ADMIN_GET_ALL_BOOKS_URL, ADMIN_GET_ALL_ORDERS_URL, ADMIN_GET_ALL_USERS_URL, BOOKS_BY_SEARCH_URL, BOOKS_URL, BOOK_ADD_NEW_URL, BOOK_BY_ID_URL } from '../shared/constants/urls';
+import { ADMIN_CHANGE_STATUS_URL, ADMIN_DELETE_BOOK_URL, ADMIN_DELETE_USER_URL, ADMIN_EDIT_BOOK_URL, ADMIN_GET_ALL_BOOKS_URL, ADMIN_GET_ALL_ORDERS_URL, ADMIN_GET_ALL_USERS_URL, BOOKS_BY_SEARCH_URL, BOOKS_URL, BOOK_ADD_NEW_URL, BOOK_BY_ID_URL } from '../shared/constants/urls';
 import { Book } from '../shared/models/Book';
 import { IBook } from '../shared/interfaces/IBook';
 import { ToastrService } from 'ngx-toastr';
@@ -72,6 +72,29 @@ export class AdminService {
 
   adminGetAllOrders(): Observable<Order[]>{
     return this.http.get<Order[]>(ADMIN_GET_ALL_ORDERS_URL)
+  }
+
+  adminChangeStatus(id: string){
+    const requestData = {
+      id: id,
+    };
+    // Effettua una richiesta HTTP POST per eliminare l'utente
+    return this.http.post(ADMIN_CHANGE_STATUS_URL, requestData, { responseType: 'text' }).pipe(
+      tap({
+        next: () => { // successo
+          
+          //window.location.reload()
+          // pop-up di successo
+          this.toastrService.success(
+            'Stato ordine cambiato con successo'
+          )
+        },
+        error: (errorResponse: { error: string | undefined; }) =>{// errore
+          // mostra pop-up di errore
+          this.toastrService.error(errorResponse.error, 'Stato ordine non cambiato');
+        }
+      })
+    ).subscribe(); // Sottoscrive all'Observable per eseguire effettivamente la richiesta
   }
 
   // USERS ----------------------------------------------------------------

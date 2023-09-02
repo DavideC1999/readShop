@@ -21,6 +21,7 @@ export const ADMIN_DELETE_BOOK_URL = BOOKS_URL + '/adminDeleteBook'
 export const ADMIN_EDIT_BOOK_URL = BOOKS_URL + '/adminEditBook'
 
 export const ADMIN_GET_ALL_ORDERS_URL = ORDERS_URL + '/adminGetAllOrders'
+export const ADMIN_CHANGE_STATUS_URL = ORDERS_URL + '/adminChangeStatus'
 
 export const ADMIN_GET_ALL_USERS_URL = USERS_URL + '/adminGetAllUsers'
 export const ADMIN_DELETE_USER_URL = USERS_URL + '/adminDeleteUser'

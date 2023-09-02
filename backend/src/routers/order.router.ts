@@ -69,7 +69,7 @@ router.post('/adminChangeStatus', asyncHandler(async(req:any, res:any) => {
         return;
     }
 
-    res.status(HTTP_BAD_REQUEST).send('Libro non modificato, il libro non esiste');
+    res.status(HTTP_BAD_REQUEST).send('Ordine non modificato, non esiste');
 }))
 
 // endpoint per la cancellazione di un ordine

@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   
   books: Book[] = [];
+
   constructor(private bookService: BookService, activatedRoute: ActivatedRoute){
     let bookObservable: Observable<Book[]>;
     // i libri presenti nella home page vengono filtrati in base al search term
@@ -32,5 +33,4 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  
 }

@@ -15,7 +15,7 @@ export class BookPageComponent implements OnInit{
   
   book!: Book
   
-  constructor(activatedRoute: ActivatedRoute, bookService: BookService, private cartService: CartService, private router: Router){
+  constructor(activatedRoute: ActivatedRoute,private bookService: BookService, private cartService: CartService, private router: Router){
     let bookObservable: Observable<Book>;
     activatedRoute.params.subscribe((params) => {
       if(params.id) // l'id del libro viene passato come parametro dell'url
@@ -31,5 +31,19 @@ export class BookPageComponent implements OnInit{
   addToCart(){
     this.cartService.addToCart(this.book) // richiama il cart service
     this.router.navigateByUrl('/cart-page') // manda l'utente al carrello
+  }
+
+  // aggiungi libro ai preferiti
+  addFav(id: string, favorite: boolean){
+    console.log(favorite)
+    if(favorite == true){
+      this.bookService.addFavorite(id, false).subscribe(_ => {
+        window.location.reload()
+      })
+    }else{
+      this.bookService.addFavorite(id, true).subscribe(_ => {
+        window.location.reload()
+      })
+    }
   }
 }

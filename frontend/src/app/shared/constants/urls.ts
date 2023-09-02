@@ -4,6 +4,8 @@ export const BOOKS_URL = BASE_URL + '/api/books'
 export const BOOK_BY_ID_URL = BOOKS_URL + '/'
 export const BOOKS_BY_SEARCH_URL = BOOKS_URL + '/search/'
 export const BOOK_ADD_NEW_URL = BOOKS_URL + '/addNewBook'
+export const BOOK_ADD_FAVORITE_URL = BOOKS_URL + '/addFavorite'
+
 
 export const USERS_URL = BASE_URL + '/api/users'
 export const USER_LOGIN_URL = USERS_URL + '/login'

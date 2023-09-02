@@ -124,4 +124,27 @@ router.post("/addNewBook", asyncHandler(async (req, res) => {
     
 }))
 
+// endpoint per la aggiungere un libro ai preferiti
+router.post('/addFavorite', asyncHandler(async(req:any, res:any) => {
+    const { id, favorite } = req.body;
+    const book = await BookModel.findOne({ _id:id });
+
+    if (book) {
+        const updateBook = {
+            favorite: favorite
+        };
+
+        const dbBook = await BookModel.findOneAndUpdate({ _id: id }, updateBook, { new: true });
+
+        if (dbBook) {
+            res.send("Modifica andata a buon fine");
+        } else {
+            res.status(HTTP_BAD_REQUEST).send('Modifica non andata a buon fine');
+        }
+        return;
+    }
+
+    res.status(HTTP_BAD_REQUEST).send('Libro non modificato, il libro non esiste');
+}))
+
 export default router;

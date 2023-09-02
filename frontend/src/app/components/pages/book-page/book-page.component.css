@@ -65,7 +65,7 @@ img{
     color: darkgray;
 }
 
-button{
+.btn{
     color: white;
     background: #6DD64C;
     border: none;
@@ -75,7 +75,17 @@ button{
     outline: none;
 }
 
-button:hover{
+.btn:hover{
     opacity: 0.9;
     cursor: pointer;
+}
+
+.favorite{
+    background-color: white;
+    border: none;
+    font-size: 2rem;
+}
+
+.favorite.not{
+    color: gray;
 }

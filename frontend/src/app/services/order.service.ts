@@ -62,5 +62,5 @@ export class OrderService {
         }
       })
     ).subscribe(); // Sottoscrive all'Observable per eseguire effettivamente la richiesta
-    }
+  }
 }

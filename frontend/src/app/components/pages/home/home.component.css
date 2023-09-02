@@ -44,17 +44,6 @@ li a img{
     height: 100%;
 }
 
-.favorite{
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-    font-size: 1.2rem;
-}
-
-.favorite.not{
-    color: gray;
-}
-
 .product-item-footer{
     display: flex;
     justify-content: space-between;
@@ -81,4 +70,21 @@ li a img{
 .info{
     color: gray;
     font-size: 1rem;
+}
+
+button {
+    background-color: white;
+    border: none;
+    color: #D74D6D
+}
+
+.favorite{
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 1.2rem;
+}
+
+.favorite.not{
+    color: gray;
 }

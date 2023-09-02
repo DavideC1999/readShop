@@ -12,9 +12,12 @@
                 {{book.name}}
             </span>
             
-            <span class="favorite {{book.favorite?'':'not'}}">
+            <!--<span class="favorite {{book.favorite?'':'not'}}">
                 ❤
-            </span>
+            </span>-->
+            <button style="cursor: pointer;" class="favorite {{book.favorite?'':'not'}}" (click)="addFav(book.id, book.favorite)">
+                ❤
+            </button>    
         </div>
         <br>
         <span class="info">
@@ -39,7 +42,7 @@
         <div class="price">
             <span>€{{book.price}}</span>
         </div>
-        <button (click)="addToCart()">Aggiungi al carrello</button>
+        <button class="btn" (click)="addToCart()">Aggiungi al carrello</button>
     </div>
 
 </div>

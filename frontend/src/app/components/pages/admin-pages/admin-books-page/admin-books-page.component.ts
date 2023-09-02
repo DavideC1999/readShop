@@ -14,9 +14,8 @@ import { Book } from 'src/app/shared/models/Book';
 export class AdminBooksPageComponent implements OnInit {
 
   books: Book[] = [];
-  bookToEdit: Book = new Book
-  idBookToEdit:string = ''
-  showEditLabels:boolean = false
+  bookToEdit: Book = new Book // memorizza il libro da editare
+  showEditLabels:boolean = false // per mostrare il form di modifica
 
   constructor(private adminService: AdminService, activatedRoute: ActivatedRoute){
     let booksObservable: Observable<Book[]>;
@@ -32,6 +31,7 @@ export class AdminBooksPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // cancella libro
   deleteBook(id: string){
     this.adminService.adminDeleteBook(id)
 
@@ -41,6 +41,7 @@ export class AdminBooksPageComponent implements OnInit {
     });
   }
 
+  // conferma delle modifiche per l'utente
   saveChanges() { // conferma le modifiche 
     this.showEditLabels = false;
     this.adminService.adminEditBook(this.bookToEdit)
@@ -51,12 +52,14 @@ export class AdminBooksPageComponent implements OnInit {
     });
   }
 
+  // apre il form per modificare il libro selezionato
   editBook(book: Book){
     this.bookToEdit = { ...book };
     this.showEditLabels = true;
     window.scrollTo(0, 0);
   }
 
+  // annula modifica
   goBack(){
     this.showEditLabels = false;
   }

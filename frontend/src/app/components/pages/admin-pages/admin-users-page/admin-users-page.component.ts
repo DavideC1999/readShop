@@ -27,15 +27,15 @@ export class AdminUsersPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // cancellazione dell'utente
   deleteUser(id: string){
-    this.adminService.adminDeleteUser(id) // richiamo l'order service
+    this.adminService.adminDeleteUser(id)
 
-    // richiedo la lista aggiornata degli ordini
+    // richiedo la lista aggiornata degli utenti
     this.adminService.adminGetAllUsers().subscribe(users => {
       this.users = users;
+      // La pagina potrebbe non aggiornarsi correttamente. per questo motivo la ricarico
+      window.location.reload()
     });
-
-    // La pagina potrebbe non aggiornarsi correttamente. per questo motivo la ricarico
-    window.location.reload()
   }
 }

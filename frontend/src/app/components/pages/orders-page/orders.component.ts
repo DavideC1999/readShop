@@ -38,10 +38,9 @@ export class OrdersComponent implements OnInit {
     // richiedo la lista aggiornata degli ordini
     this.orderService.getAllOrders(this.userService).subscribe(orders => {
       this.orders = orders;
+      // La pagina potrebbe non aggiornarsi correttamente. per questo motivo la ricarico
+      window.location.reload()
     });
-
-    // La pagina potrebbe non aggiornarsi correttamente. per questo motivo la ricarico
-    window.location.reload()
   }
 
 }

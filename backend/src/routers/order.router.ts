@@ -5,7 +5,7 @@ import { OrderModel } from "../models/order.model";
 import auth from '../middlewares/auth.mid'
 
 const router = Router()
-//router.use(auth) // azioni eseguibili solo se l'utente è autenticato
+router.use(auth) // azioni eseguibili solo se l'utente è autenticato
 
 // enpoint per la creazione di un ordine. Quando l'utente effettua il pagamento
 router.post('/create', asyncHandler( async (req:any, res:any) => {

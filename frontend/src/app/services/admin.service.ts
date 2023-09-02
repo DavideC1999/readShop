@@ -48,7 +48,7 @@ export class AdminService {
   }
 
   adminEditBook(book: Book){
-    // Effettua una richiesta HTTP POST per eliminare il libro
+    // Effettua una richiesta HTTP POST per modifcare il libro
     return this.http.post(ADMIN_EDIT_BOOK_URL, book, { responseType: 'text' }).pipe(
       tap({
         next: () => { // successo

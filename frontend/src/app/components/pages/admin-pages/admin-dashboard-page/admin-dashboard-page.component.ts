@@ -27,10 +27,13 @@ export class AdminDashboardPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // alla chiusura della pagine imposta, tramite la local storage, la pagina degli ordini
+  // ogni volta che si apre la dashboard si parte da quella pagina
   ngOnDestroy(){
     this.adminService.setPage(ORDERS);
   }
 
+  // cambio pagina. La pagina viene settata sulla local storage
   submit(page: number){
     this.adminService.setPage(page);
     this.contentPage = page;

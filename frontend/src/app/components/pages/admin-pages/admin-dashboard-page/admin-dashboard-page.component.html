@@ -33,7 +33,7 @@
     </div>
     <div *ngIf="contentPage==3">
       <app-title title="Gestione Libri"></app-title>
-      <button mat-button color="primary" [ngClass]="{'add-button': true}" (click)="submit(4)">Aggiungi Libro +</button>
+      <button mat-button color="primary" class="add-button" (click)="submit(4)">+</button>
       <admin-books-page></admin-books-page>
     </div>
     <div *ngIf="contentPage==4">

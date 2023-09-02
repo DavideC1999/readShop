@@ -28,7 +28,7 @@ router.get('/adminGetAllBooks', asyncHandler( async (req:any, res: any) => {
     }
 }))
 
-
+// endpoint per cancellare un libro dal db. Solo per admin
 router.post("/adminDeleteBook", asyncHandler( async (req, res) => {   
     const {id} = req.body
   
@@ -41,6 +41,7 @@ router.post("/adminDeleteBook", asyncHandler( async (req, res) => {
     }
   }))
 
+// endpoint per modificare un libro nel db. Solo per admin
 router.post("/adminEditBook", asyncHandler(async (req, res) => {
     const { id, name, price, author, genre, description, ISBN, releaseYear, imageUrl } = req.body;
     const book = await BookModel.findOne({ _id:id });

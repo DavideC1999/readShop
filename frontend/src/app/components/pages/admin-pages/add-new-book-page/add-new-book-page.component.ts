@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/app/services/book.service';
 import { UserService } from 'src/app/services/user.service';
 import { IBook } from 'src/app/shared/interfaces/IBook';
+
+export const ADD = 1
+export const EDIT = 2
+
 
 @Component({
   selector: 'app-add-new-book-page',
@@ -12,6 +16,9 @@ import { IBook } from 'src/app/shared/interfaces/IBook';
 })
 // pagina navigabile dall'admin per aggiungere un nuovo libro
 export class AddNewBookPageComponent implements OnInit{
+
+  @Input()
+  action: number = ADD
 
   registerForm!: FormGroup;
   isSubmitted = false;

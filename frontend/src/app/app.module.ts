@@ -32,6 +32,7 @@ import { AdminDashboardPageComponent } from './components/pages/admin-pages/admi
 import { AdminOrdersComponent } from './components/pages/admin-pages/admin-orders-page/admin-orders.component';
 import { AdminUsersPageComponent } from './components/pages/admin-pages/admin-users-page/admin-users-page.component';
 import { AdminBooksPageComponent } from './components/pages/admin-pages/admin-books-page/admin-books-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { AdminBooksPageComponent } from './components/pages/admin-pages/admin-bo
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
       newestOnTop: false
-    })
+    }),
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },

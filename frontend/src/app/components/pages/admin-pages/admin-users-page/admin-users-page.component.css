@@ -23,8 +23,11 @@ td {
 button {
   color: #D74D6D;
   border: 0;
-  size: 10px;
+  background-color: white;
+  font-size: 25px;
+  margin-bottom: 1rem;
 }
+
 
 .btn {
   text-align: center;

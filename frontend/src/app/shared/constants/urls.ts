@@ -18,6 +18,7 @@ export const ORDER_DELETE_URL = ORDERS_URL + '/deleteOrder'
 
 export const ADMIN_GET_ALL_BOOKS_URL = BOOKS_URL + '/adminGetAllBooks'
 export const ADMIN_DELETE_BOOK_URL = BOOKS_URL + '/adminDeleteBook'
+export const ADMIN_EDIT_BOOK_URL = BOOKS_URL + '/adminEditBook'
 
 export const ADMIN_GET_ALL_ORDERS_URL = ORDERS_URL + '/adminGetAllOrders'
 

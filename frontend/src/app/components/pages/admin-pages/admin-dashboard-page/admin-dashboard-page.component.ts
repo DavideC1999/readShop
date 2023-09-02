@@ -1,29 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { PageService } from '../../../../services/page-service'
+import { AdminService } from 'src/app/services/admin.service';
+
+export const ORDERS = 1
+export const USERS = 2
+export const BOOKS = 3
+export const ADD_NEW_BOOK = 4
 
 @Component({
   selector: 'app-admin-dashboard-page',
   templateUrl: './admin-dashboard-page.component.html',
   styleUrls: ['./admin-dashboard-page.component.css']
-  
 })
 
 export class AdminDashboardPageComponent implements OnInit {
 
   contentPage:number
+  
+  ORDERS: number = ORDERS;
+  USERS: number = USERS;
+  BOOKS: number = BOOKS;
+  ADD_NEW_BOOK: number = ADD_NEW_BOOK;
 
-  constructor(private pageService: PageService){
-    this.contentPage = pageService.getPage()
+  constructor(private adminService: AdminService){
+    this.contentPage = adminService.getPage()
   }
 
   ngOnInit(): void {}
 
   ngOnDestroy(){
-    this.pageService.setPage(1);
+    this.adminService.setPage(ORDERS);
   }
 
   submit(page: number){
-    this.pageService.setPage(page);
+    this.adminService.setPage(page);
     this.contentPage = page;
   }
 }

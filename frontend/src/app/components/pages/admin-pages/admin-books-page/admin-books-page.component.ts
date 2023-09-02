@@ -5,6 +5,7 @@ import { AdminService } from 'src/app/services/admin.service';
 import { BookService } from 'src/app/services/book.service';
 import { Book } from 'src/app/shared/models/Book';
 
+
 @Component({
   selector: 'admin-books-page',
   templateUrl: './admin-books-page.component.html',
@@ -13,6 +14,9 @@ import { Book } from 'src/app/shared/models/Book';
 export class AdminBooksPageComponent implements OnInit {
 
   books: Book[] = [];
+  bookToEdit: Book = new Book
+  idBookToEdit:string = ''
+  showEditLabels:boolean = false
 
   constructor(private adminService: AdminService, activatedRoute: ActivatedRoute){
     let booksObservable: Observable<Book[]>;
@@ -33,9 +37,27 @@ export class AdminBooksPageComponent implements OnInit {
 
     this.adminService.adminGetAllBooks().subscribe(books => {
       this.books = books;
+      window.location.reload()
     });
-
-    window.location.reload()
   }
 
+  saveChanges() { // conferma le modifiche 
+    this.showEditLabels = false;
+    this.adminService.adminEditBook(this.bookToEdit)
+    
+    this.adminService.adminGetAllBooks().subscribe(books => {
+      this.books = books;
+      window.location.reload()
+    });
+  }
+
+  editBook(book: Book){
+    this.bookToEdit = { ...book };
+    this.showEditLabels = true;
+    window.scrollTo(0, 0);
+  }
+
+  goBack(){
+    this.showEditLabels = false;
+  }
 }

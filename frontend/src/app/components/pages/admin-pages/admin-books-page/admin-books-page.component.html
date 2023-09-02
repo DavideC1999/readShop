@@ -1,4 +1,62 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+<div *ngIf="showEditLabels" class="editForm">
+  <div>
+    <label for="id">Id: </label>
+    <input readonly="id" [(ngModel)]="bookToEdit.id">
+  </div>
+
+  <div>
+    <label for="name">Nome: </label>
+    <input type="text" [(ngModel)]="bookToEdit.name">
+  </div>
+
+  <div>
+    <label for="author">Autore: </label>
+    <input type="text" [(ngModel)]="bookToEdit.author">
+  </div>
+
+  <div>
+    <label for="genre">Genere: </label>
+    <input type="text" [(ngModel)]="bookToEdit.genre">
+  </div>
+
+  <div>
+    <label for="releaseYear">Anno: </label>
+    <input type="text" [(ngModel)]="bookToEdit.releaseYear">
+  </div>
+
+  <div>
+    <label for="ISBN">ISBN: </label>
+    <input type="text" [(ngModel)]="bookToEdit.ISBN">
+  </div>
+
+  <div>
+    <label for="description">Descrizione: </label>
+    <input class="description" type="text" [(ngModel)]="bookToEdit.description">
+  </div>
+
+  <div>
+    <label for="price">Prezzo: </label>
+    <input type="text" [(ngModel)]="bookToEdit.price">
+  </div>
+
+  <div>
+    <label for="imageUrl">Url Immagine: </label>
+    <input type="text" [(ngModel)]="bookToEdit.imageUrl">
+  </div>
+  
+  <div class="icons">
+    <button type="button" class="btn btn-primary" (click)="goBack()">
+      <i class='bi bi-arrow-counterclockwise'></i>
+    </button>
+    
+    <button type="button" class="btn btn-primary" (click)="saveChanges()" style="color: #6DD64C;">
+      <i class='bi bi-check2-square'></i>
+    </button>
+  </div>
+</div>
+
 <div class="table-container">
   <table>
     <thead>
@@ -11,32 +69,45 @@
         <th>ISBN</th>
         <th>Descrizione</th>
         <th>Prezzo</th>
-        <th>imageUrl</th>
+        <th>Url Immagine</th>
         <th></th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let book of books">
-        <td>{{book.id}}</td>
-        <td>{{book.name}}</td>
-        <td>{{book.author}}</td>
-        <td>{{book.genre}}</td>
-        <td>{{book.releaseYear}}</td>
-        <td>{{book.ISBN}}</td>
-        <td>{{book.description}}</td>
-        <td>{{book.price}}€</td>
-        <td>
-          <img [src]="book.imageUrl"/>        
-          <br>
-          <br>
-          {{book.imageUrl}}
-        </td>
-        <td class="btn" >
-          <button type="button" class="btn btn-danger" (click)="deleteBook(book.id)">
-            <i class="bi bi-trash-fill red-color"></i>
-          </button>
-        </td>
-      </tr>
+    <tbody *ngFor="let book of books">
+      <ng-container>
+        <tr>
+          <td>{{book.id}}</td>
+          <td>{{book.name}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.genre}}</td>
+          <td>{{book.releaseYear}}</td>
+          <td>{{book.ISBN}}</td>
+          <td>{{book.description}}</td>
+          <td>{{book.price}}€</td>
+          <td>
+            <img [src]="book.imageUrl"/>        
+            <br>
+            <br>
+            {{book.imageUrl}}
+          </td>
+          <td *ngIf="showEditLabels == false || book.id != bookToEdit.id">
+            <button type="button" class="btn btn-danger" (click)="deleteBook(book.id)">
+              <i class="bi bi-trash-fill red-color"></i>
+            </button>
+            <button type="button" class="btn btn-danger" (click)="editBook(book)">
+              <i class='bi bi-box-arrow-in-down-left'></i>
+            </button>
+          </td>
+          <td *ngIf="showEditLabels && book.id == bookToEdit.id">
+            <button type="button" class="btn btn-primary" (click)="goBack()" >
+              <i class='bi bi-arrow-counterclockwise'></i>
+            </button>
+            <button type="button" class="btn btn-primary" (click)="saveChanges()" style="color: #6DD64C;">
+              <i class='bi bi-check2-square'></i>
+            </button>
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
 </div>

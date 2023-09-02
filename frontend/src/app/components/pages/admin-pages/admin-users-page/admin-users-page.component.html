@@ -17,7 +17,8 @@
         <td>{{user.email}}</td>
         <!--<td>{{user.password}}</td>-->
         <td>{{user.address}}</td>
-        <td>{{user.isAdmin}}</td>
+        <td *ngIf="user.isAdmin">Amministratore</td>
+        <td *ngIf="user.isAdmin == false">Utente</td>
         <td class="btn" >
           <button *ngIf="user.isAdmin == false || user.id != this.user.id" type="button" class="btn btn-danger" (click)="deleteUser(user.id)">
             <i class="bi bi-trash-fill red-color"></i>

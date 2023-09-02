@@ -40,6 +40,36 @@ router.post("/adminDeleteBook", asyncHandler( async (req, res) => {
         res.send("Nessun Libro");
     }
   }))
+
+router.post("/adminEditBook", asyncHandler(async (req, res) => {
+    const { id, name, price, author, genre, description, ISBN, releaseYear, imageUrl } = req.body;
+    const book = await BookModel.findOne({ _id:id });
+
+    if (book) {
+        const updatedBook = {
+            name: name,
+            price: price,
+            author: author,
+            genre: genre,
+            description: description,
+            ISBN: ISBN,
+            releaseYear: releaseYear,
+            imageUrl: imageUrl,
+            favorite: false
+        };
+
+        const dbBook = await BookModel.findOneAndUpdate({ _id: id }, updatedBook, { new: true });
+
+        if (dbBook) {
+            res.send(dbBook);
+        } else {
+            res.status(HTTP_BAD_REQUEST).send('Modifica non andata a buon fine');
+        }
+        return;
+    }
+
+    res.status(HTTP_BAD_REQUEST).send('Libro non modificato, il libro non esiste');
+}))
   
 
 // endopoint utilizzato per la Search. Il parametro viene passato sull'url

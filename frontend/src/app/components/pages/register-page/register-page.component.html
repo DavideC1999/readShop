@@ -1,6 +1,6 @@
 <div class="container">
     <div class="details">
-      <app-title title="Register"></app-title>
+      <app-title title="Registrazione"></app-title>
       <form [formGroup]="registerForm" (ngSubmit)="submit()">
             <text-input
                 [control]="fc.name"
@@ -30,12 +30,12 @@
                 [showErrorsWhen]="isSubmitted"
                 label="Indirizzo di spedizione"></text-input>
                         
-            <default-button text="Register"></default-button>
+            <default-button text="Registrati"></default-button>
             
             <div class="login">
-                Already a user? &nbsp;
+                Hai già un account? &nbsp;
                 <a routerLink="/login" [queryParams]="{returnUrl: returnUrl}">
-                Login
+                Effettua il Login
                 </a>
             </div>
       </form>

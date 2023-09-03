@@ -2,25 +2,40 @@ table {
   border-collapse: collapse;
   width: 99%;
   margin-top: 2rem;
-  margin-left: 0.7rem;
 }
 
-.table-container{
-  overflow-x: auto;
+.table-container::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.table-container::-webkit-scrollbar:horizontal {
+  height: 12px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+}
+
+.table-container::-webkit-scrollbar-track {
+  border-radius: 10px;  
+  background-color: #ffffff; 
 }
 
 td {
   border: 1px solid black;
   padding: 8px;
   text-align: center;
+  font-size: small;
 }
 
 .firstRow {
-  background-color: #D74D6D;
+  background-color: #D22B2B;
 }
 
 button {
-  color: #D74D6D;
+  color: #D22B2B;
   border: 0;
   background-color: white;
   font-size: 25px;
@@ -32,8 +47,8 @@ button {
 }
 
 img{
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   object-fit: fill;
 }
 

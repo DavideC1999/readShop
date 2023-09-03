@@ -2,7 +2,7 @@
     position: relative;
     background: white;/*4CD688*/
     padding: 0;
-    /*border-bottom: 1px solid #D74D6D;*/
+    /*border-bottom: 1px solid #D22B2B;*/
     border-bottom: 1px solid black;
 }
 
@@ -11,13 +11,13 @@
 }
 
 a{
-    /*color: #D74D6D;*/
+    /*color: #D22B2B;*/
     color: black;
 }
 
 a:hover{
-    background-color: #D74D6D;
-    color: white;
+    background-color: #D22B2B;
+    color: white !important;
     cursor: pointer;
 }
 
@@ -45,19 +45,15 @@ ul a{
 }
 
 a span{
-    background: #D74D6D;
+    background: #D22B2B;
     color: white;
     padding: 0.1rem 0.45rem;
     border-radius: 100rem;
     font-size: 0.9rem;
 }
 
-a:hover{
-    color: black !important;
-}
-
 .add-button {
-    background-color: #D74D6D;
+    background-color: #D22B2B;
     color: white;
     border: none;
     padding: 10px 20px;

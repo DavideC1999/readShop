@@ -1,7 +1,7 @@
 .container{
     padding: 0.1rem 10% 100% 10%;
     height: 20rem;
-    /*border: 1px solid #D74D6D;*/
+    /*border: 1px solid #D22B2B;*/
     border-radius: 1rem;
     margin: 3rem 3rem 3rem 3rem;
 }
@@ -24,7 +24,7 @@ li a{
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    color: #D74D6D;
+    color: #D22B2B;
 }
 
 li a:hover{
@@ -75,7 +75,7 @@ li a img{
 button {
     background-color: white;
     border: none;
-    color: #D74D6D
+    color: #D22B2B
 }
 
 .favorite{

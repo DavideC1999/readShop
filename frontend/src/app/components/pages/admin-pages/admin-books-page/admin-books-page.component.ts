@@ -56,7 +56,7 @@ export class AdminBooksPageComponent implements OnInit {
   editBook(book: Book){
     this.bookToEdit = { ...book };
     this.showEditLabels = true;
-    window.scrollTo(0, 0);
+    window.scrollTo(180, 180);
   }
 
   // annula modifica

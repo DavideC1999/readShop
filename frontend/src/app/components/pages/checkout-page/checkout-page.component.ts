@@ -69,7 +69,7 @@ export class CheckoutPageComponent implements OnInit {
       next: () => { // successo
         this.toastrService.success('Pagamento effettuato correttamente!')
         this.cartService.clearCart()
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/orders')
       },
       error: (erroResponse) => { // errore
         this.toastrService.error(erroResponse.error, 'Pagamento non andato a buon fine')

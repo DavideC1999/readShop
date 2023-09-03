@@ -28,8 +28,8 @@
       <br>
       <div class="total-price">Prezzo totale: €{{order.totalPrice}}</div>
       <div class="btn-container" style="display: flex;">
-        <default-button *ngIf="order.status == 'IN ELABORAZIONE'"  class="delete" bgColor="#0079C1" text="Spedisci Ordine" (click)="changeOrderStatus(order.id)"></default-button>
-        <default-button class="delete" bgColor="rgb(230, 25, 25)" text="Elimina Ordine" (click)="deleteOrder(order.id)"></default-button>
+        <default-button *ngIf="order.status == 'IN ELABORAZIONE'"  class="delete" bgColor="#0079C1" text="Spedisci" (click)="changeOrderStatus(order.id)"></default-button>
+        <default-button class="delete" bgColor="rgb(230, 25, 25)" text="Elimina" (click)="deleteOrder(order.id)"></default-button>
       </div>
     </div>
     <hr class="separator">

@@ -42,7 +42,7 @@ router.post("/login", asyncHandler( async (req, res) => {
     if(user && (await bcrypt.compare(password, user.password))){
         res.send(generateTokenResponse(user))
     }else{
-        res.status(HTTP_BAD_REQUEST).send("Email or Password not valid!")
+        res.status(HTTP_BAD_REQUEST).send("Email o Password non valide!")
     }
 }))
 

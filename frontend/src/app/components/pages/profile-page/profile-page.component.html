@@ -26,4 +26,8 @@
       <span class="label">Id:</span>
       <span class="value">{{user.id}}</span>
     </div>
+    <div class="btn-container" style="display: flex;">
+      <!--<default-button class="delete" bgColor="#0079C1" text="Spedisci" (click)="changeOrderStatus(order.id)"></default-button>-->
+      <default-button class="delete" bgColor="rgb(230, 25, 25)" text="Elimina" (click)="deleteUser(user.id)"></default-button>
+    </div>
 </div>

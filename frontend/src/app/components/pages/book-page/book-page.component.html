@@ -11,10 +11,6 @@
             <span class="name">
                 {{book.name}}
             </span>
-            
-            <!--<span class="favorite {{book.favorite?'':'not'}}">
-                ❤
-            </span>-->
             <button style="cursor: pointer;" class="favorite {{book.favorite?'':'not'}}" (click)="addFav(book.id, book.favorite)">
                 ❤
             </button>    

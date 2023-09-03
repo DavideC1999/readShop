@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 <header *ngIf="showHeader">
     <div class="container">
         <a routerLink="/" class="logo">READ SHOP</a>
@@ -13,7 +15,8 @@
                     <a routerLink="/dashboard">Admin dashboard</a>
                 </li>
                 <li *ngIf="isAuth" class="menu-container">
-                    <a class="profile" routerLink="/profile">{{user.name}}</a>
+                    <a *ngIf="isAdmin" class="profile" routerLink="/profile">{{user.name}} (Admin)</a>
+                    <a *ngIf="!isAdmin" class="profile" routerLink="/profile">{{user.name}}</a>
                     <div class="menu">
                         <a routerLink="/profile">Profilo</a>
                         <a routerLink="/orders">Ordini</a>
@@ -22,7 +25,7 @@
                 </li>
                 <li>
                     <a routerLink="/cart-page">
-                        Carrello <span *ngIf="cartQuantity">{{cartQuantity}}</span>
+                      <i class="fa fa-shopping-cart"></i> <span *ngIf="cartQuantity">{{cartQuantity}}</span>
                     </a>
                 </li>
             </ul>
